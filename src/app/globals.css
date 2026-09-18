@@ -1,26 +1,205 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+@theme {
+  --color-ivory: #faf6f1;
+  --color-ivory-dark: #efe6dc;
+  --color-bronze: #9a7955;
+  --color-bronze-dark: #6f5a46;
+  --color-charcoal: #1d1b19;
+  --color-charcoal-soft: #2d2a27;
+  --color-border: #ded4ca;
+  --color-offwhite: #fffdfc;
+
+  --font-serif: var(--font-dm-serif-display), Georgia, serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  /* Single easing curve for the whole site: calm, no overshoot. */
+  --ease-premium: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/*
+ * Motion tokens. Durations live here rather than being sprinkled through
+ * components so the whole site can be retuned from one place.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --lx-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --lx-fast: 180ms; /* hover, press, colour changes */
+  --lx-normal: 300ms; /* menus, accordions, UI state */
+  --lx-reveal: 550ms; /* section reveal on scroll */
+  --lx-page: 420ms; /* page entrance */
+  --lx-settle: 800ms; /* hero imagery settling in */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/*
+ * One transition utility for the whole site. Tailwind v4 emits translate,
+ * scale and rotate as independent CSS properties, so listing only `transform`
+ * silently fails to animate them — they are all named here instead.
+ * Always pair with an explicit duration-* utility.
+ */
+@utility transition-premium {
+  transition-property: color, background-color, border-color, outline-color, box-shadow,
+    opacity, transform, translate, scale, rotate, grid-template-rows;
+  transition-timing-function: var(--lx-ease);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+  /* Keep anchor targets clear of the fixed header. */
+  scroll-padding-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 5rem;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-bronze);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Reveal on scroll. The variant is carried in `data-reveal`, the state in
+ * `data-revealed`, so only opacity and transform ever animate.
+ * ------------------------------------------------------------------------ */
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity var(--lx-reveal) var(--lx-ease),
+    transform var(--lx-reveal) var(--lx-ease);
+  transition-delay: var(--lx-reveal-delay, 0ms);
+}
+
+[data-reveal='rise'] {
+  transform: translate3d(0, 24px, 0);
+}
+
+[data-reveal='image'] {
+  transform: scale(1.03);
+}
+
+[data-reveal][data-revealed='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * Entrance animations that run on mount (hero and page headers).
+ * ------------------------------------------------------------------------ */
+@keyframes lx-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lx-settle {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lx-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+[data-enter] {
+  animation: lx-enter var(--lx-page) var(--lx-ease) both;
+  animation-delay: var(--lx-enter-delay, 0ms);
+}
+
+[data-enter='settle'] {
+  animation: lx-settle var(--lx-settle) var(--lx-ease) both;
+}
+
+/*
+ * Page entrance. Opacity only: a transform here would create a containing
+ * block and break the fixed header and mobile booking bar.
+ */
+[data-page-transition] {
+  animation: lx-fade var(--lx-page) var(--lx-ease) both;
+}
+
+/* ---------------------------------------------------------------------------
+ * Reduced motion: everything is shown immediately, nothing moves.
+ * ------------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal],
+  [data-enter],
+  [data-page-transition] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Slow breathing cue under the hero. Disabled by the reduced-motion block above. */
+@keyframes lx-scroll-cue {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+[data-scroll-cue] {
+  animation: lx-scroll-cue 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-cue] {
+    animation: none !important;
+    opacity: 0.6 !important;
+  }
 }
