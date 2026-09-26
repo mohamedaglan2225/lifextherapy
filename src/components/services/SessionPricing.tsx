@@ -39,6 +39,7 @@ export function SessionPricing({ service }: { service: Service }) {
             </ul>
             <BookingLink
               className="mt-8"
+              service={service.slug}
               label={`Book ${service.name} — continues to Vagaro`}
             >
               Book {service.shortName}

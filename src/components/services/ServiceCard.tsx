@@ -85,6 +85,8 @@ export function ServiceCard({
         <BookingLink
           variant="dark"
           size="block"
+          service={service.slug}
+          minutes={selected.minutes}
           label={`Book ${service.name}, ${selected.minutes} minute session, ${formatPrice(selected.price)} — continues to Vagaro`}
         >
           Book {service.shortName}

@@ -46,6 +46,8 @@ export function ServiceBooking({ service }: { service: Service }) {
       <BookingLink
         size="bar"
         className="mt-6"
+        service={service.slug}
+        minutes={selected.minutes}
         label={`Book ${service.name}, ${selected.minutes} minute session, ${formatPrice(selected.price)} — continues to Vagaro`}
       >
         Book This Session

@@ -11,11 +11,6 @@ export const siteConfig = {
     'Personalized massage therapy and bodywork designed to relieve tension, restore movement, and help you feel your best.',
   /** Set NEXT_PUBLIC_SITE_URL once the production domain is chosen. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
-  /**
-   * Every booking action on the site resolves to this single value.
-   * Placeholder until the real Vagaro booking URL is supplied.
-   */
-  bookingUrl: process.env.NEXT_PUBLIC_VAGARO_BOOKING_URL ?? 'https://www.vagaro.com/',
 } as const
 
 /**
@@ -44,17 +39,17 @@ export const navLinks: NavLink[] = [
 ]
 
 /**
- * Real business details are not yet known. Every value below is placeholder
- * copy carried over from the approved design and must be replaced before launch.
+ * Phone and address are the confirmed business details. Every other value
+ * below is placeholder copy from the approved design and must be replaced
+ * before launch.
  */
 export const businessPlaceholders = {
-  phone: '[Phone placeholder]',
-  /** Empty until a real number is supplied; the markup then becomes a live tel: link. */
-  phoneHref: '',
+  phone: '(321) 467-4569',
+  phoneHref: 'tel:+13214674569',
   email: '[Email placeholder]',
   /** Empty until a real address is supplied; the markup then becomes a live mailto: link. */
   emailHref: '',
-  address: '[Address placeholder]',
+  address: '1541 S Wickham Rd, West Melbourne, FL 32904',
   hours: [
     { day: 'Monday – Friday', hours: '[Hours placeholder]' },
     { day: 'Saturday', hours: '[Hours placeholder]' },
