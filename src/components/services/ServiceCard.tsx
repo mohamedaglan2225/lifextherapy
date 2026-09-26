@@ -40,6 +40,7 @@ export function ServiceCard({
           fill
           priority={priority}
           sizes={sizes}
+          data-settle
           className="object-cover transition-premium duration-500 motion-safe:group-hover:scale-[1.04]"
         />
       </Link>

@@ -12,7 +12,7 @@ const details: Array<{ label: string; value: string; icon: IconName }> = [
 ]
 
 const actionClasses =
-  'flex-1 rounded-sm border border-charcoal py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-charcoal transition-premium duration-[var(--lx-fast)] hover:bg-charcoal hover:text-ivory motion-safe:active:scale-[0.98]'
+  'flex-1 rounded-sm border border-charcoal py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-charcoal transition-premium duration-[var(--lx-fast)] hover:bg-charcoal hover:text-ivory motion-safe:hover:-translate-y-px motion-safe:active:translate-y-0 motion-safe:active:scale-[0.98]'
 
 export function ContactSection() {
   return (

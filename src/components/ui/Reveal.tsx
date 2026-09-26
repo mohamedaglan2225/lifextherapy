@@ -10,6 +10,8 @@ type RevealProps = {
   variant?: RevealVariant
   /** Stagger offset in milliseconds. */
   delay?: number
+  /** Animate direct children one after another instead of as one block. */
+  stagger?: boolean
   as?: ElementType
 }
 
@@ -24,6 +26,7 @@ export function Reveal({
   className,
   variant = 'rise',
   delay = 0,
+  stagger = false,
   as: Tag = 'div',
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
@@ -59,7 +62,13 @@ export function Reveal({
   const style = delay ? ({ '--lx-reveal-delay': `${delay}ms` } as CSSProperties) : undefined
 
   return (
-    <Tag ref={ref} data-reveal={variant} style={style} className={className}>
+    <Tag
+      ref={ref}
+      data-reveal={variant}
+      data-stagger={stagger || undefined}
+      style={style}
+      className={className}
+    >
       {children}
     </Tag>
   )

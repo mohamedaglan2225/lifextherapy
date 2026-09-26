@@ -19,7 +19,7 @@ export function FinalCTA() {
         <div className="absolute inset-0 bg-charcoal/80" />
       </div>
 
-      <Reveal className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-10">
+      <Reveal stagger className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-10">
         <Eyebrow className="mb-6">Ready to Begin</Eyebrow>
         <h2 className="mb-6 font-serif text-5xl leading-tight text-offwhite lg:text-6xl">
           Ready to Feel Better?

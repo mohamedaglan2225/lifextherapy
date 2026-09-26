@@ -18,6 +18,7 @@ export function PhilosophySection() {
                 fill
                 loading="lazy"
                 sizes="(min-width: 1024px) 45vw, 100vw"
+                data-settle
                 className="object-cover"
               />
             </div>

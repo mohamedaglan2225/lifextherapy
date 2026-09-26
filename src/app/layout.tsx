@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Scroll reveals start hidden and are shown by script; without JS they must never stay invisible. */}
         <noscript>
-          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+          <style>{`[data-reveal],[data-stagger]>*,[data-settle]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
       </head>
       <body className="min-h-screen bg-ivory pb-16 antialiased md:pb-0">

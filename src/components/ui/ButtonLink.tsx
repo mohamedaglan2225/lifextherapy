@@ -23,7 +23,7 @@ const sizes: Record<ButtonSize, string> = {
 }
 
 const base =
-  'inline-flex items-center justify-center rounded-sm font-medium transition-premium duration-[var(--lx-fast)] motion-safe:active:scale-[0.98]'
+  'inline-flex items-center justify-center rounded-sm font-medium transition-premium duration-[var(--lx-fast)] motion-safe:hover:-translate-y-px motion-safe:active:translate-y-0 motion-safe:active:scale-[0.98]'
 
 type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string

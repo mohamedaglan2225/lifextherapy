@@ -20,7 +20,7 @@ export function ServiceEditorial({ service }: { service: Service }) {
         </Reveal>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-20">
-          <Reveal>
+          <Reveal stagger>
             <Eyebrow className="mb-4">About This Massage</Eyebrow>
             <SectionTitle className="mb-6 text-3xl text-charcoal lg:text-4xl">
               What the session is
@@ -35,7 +35,7 @@ export function ServiceEditorial({ service }: { service: Service }) {
             ))}
           </Reveal>
 
-          <Reveal delay={90}>
+          <Reveal stagger delay={90}>
             <Eyebrow className="mb-4">What To Expect</Eyebrow>
             <SectionTitle className="mb-6 text-3xl text-charcoal lg:text-4xl">
               How it runs

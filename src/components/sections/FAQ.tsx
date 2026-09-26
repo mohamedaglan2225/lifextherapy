@@ -36,7 +36,7 @@ export function FAQ({
     <section id="faq" className={cn('bg-ivory py-20 lg:py-28', className)}>
       <Container>
         <div className="grid items-start gap-16 lg:grid-cols-[1fr_1.4fr]">
-          <Reveal>
+          <Reveal stagger>
             <Eyebrow className="mb-6">{eyebrow}</Eyebrow>
             <SectionTitle className="text-charcoal">{title}</SectionTitle>
             {intro && (

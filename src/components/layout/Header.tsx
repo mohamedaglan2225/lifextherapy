@@ -43,6 +43,7 @@ export function Header() {
   return (
     <>
       <header
+        data-header-enter
         className={cn(
           'fixed inset-x-0 top-0 z-50 border-b border-border bg-ivory/95 backdrop-blur-sm transition-premium duration-[var(--lx-normal)]',
           !menuOpen && 'shadow-[0_1px_24px_-16px_rgba(29,27,25,0.55)]',

@@ -80,7 +80,7 @@ export default function AboutPage() {
 
       <section className="bg-offwhite py-20 lg:py-28">
         <Container>
-          <Reveal className="mb-14 max-w-xl">
+          <Reveal stagger className="mb-14 max-w-xl">
             <Eyebrow className="mb-4">Our Approach</Eyebrow>
             <SectionTitle className="mb-4 text-charcoal">How we work</SectionTitle>
             <p className="text-base font-light leading-relaxed text-bronze-dark">

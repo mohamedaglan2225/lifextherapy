@@ -10,7 +10,7 @@ export function BenefitsSection() {
     <section className="bg-offwhite py-20 lg:py-28">
       <Container>
         <div className="grid items-start gap-16 lg:grid-cols-2">
-          <Reveal>
+          <Reveal stagger>
             <Eyebrow className="mb-6">Why Choose Us</Eyebrow>
             <SectionTitle className="text-charcoal">
               Why Choose

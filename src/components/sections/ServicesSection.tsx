@@ -32,7 +32,7 @@ export function ServicesSection({
     <section id="services" className={cn('bg-ivory py-20 lg:py-28', className)}>
       <Container>
         {title && (
-          <Reveal className="mb-14 max-w-xl">
+          <Reveal stagger className="mb-14 max-w-xl">
             {eyebrow && <Eyebrow className="mb-4">{eyebrow}</Eyebrow>}
             <SectionTitle className="mb-4 text-charcoal">{title}</SectionTitle>
             {intro && (

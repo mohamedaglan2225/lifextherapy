@@ -8,7 +8,7 @@ export function BookingSteps() {
   return (
     <section className="bg-offwhite py-20 lg:py-28">
       <Container>
-        <Reveal className="mx-auto mb-14 max-w-xl text-center">
+        <Reveal stagger className="mx-auto mb-14 max-w-xl text-center">
           <Eyebrow className="mb-4">How It Works</Eyebrow>
           <SectionTitle className="text-charcoal">Book Your Session</SectionTitle>
         </Reveal>

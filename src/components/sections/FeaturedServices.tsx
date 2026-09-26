@@ -12,7 +12,7 @@ export function FeaturedServices() {
   return (
     <section className="bg-charcoal py-20 lg:py-28">
       <Container>
-        <Reveal className="mb-14">
+        <Reveal stagger className="mb-14">
           <Eyebrow className="mb-4">Signature Experiences</Eyebrow>
           <SectionTitle className="max-w-xl text-offwhite">Bodywork Worth Experiencing</SectionTitle>
         </Reveal>
@@ -41,6 +41,7 @@ export function FeaturedServices() {
                     fill
                     loading="lazy"
                     sizes="(min-width: 1024px) 45vw, 100vw"
+                    data-settle
                     className="object-cover transition-premium duration-700 motion-safe:group-hover:scale-[1.04]"
                   />
                 </div>

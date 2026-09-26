@@ -21,7 +21,7 @@ export function RelatedServices({
   return (
     <section className="bg-offwhite py-20 lg:py-28">
       <Container>
-        <Reveal className="mb-12">
+        <Reveal stagger className="mb-12">
           <Eyebrow className="mb-4">{eyebrow}</Eyebrow>
           <SectionTitle className="text-charcoal">{title}</SectionTitle>
         </Reveal>
@@ -40,6 +40,7 @@ export function RelatedServices({
                     fill
                     loading="lazy"
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    data-settle
                     className="object-cover transition-premium duration-500 motion-safe:group-hover:scale-[1.04]"
                   />
                 </div>

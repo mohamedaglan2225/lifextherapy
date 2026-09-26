@@ -14,7 +14,7 @@
   --font-sans: var(--font-manrope), system-ui, sans-serif;
 
   /* Single easing curve for the whole site: calm, no overshoot. */
-  --ease-premium: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /*
@@ -22,12 +22,20 @@
  * components so the whole site can be retuned from one place.
  */
 :root {
-  --lx-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --lx-fast: 180ms; /* hover, press, colour changes */
+  --lx-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --lx-fast: 200ms; /* hover, press, colour changes */
   --lx-normal: 300ms; /* menus, accordions, UI state */
   --lx-reveal: 550ms; /* section reveal on scroll */
   --lx-page: 420ms; /* page entrance */
   --lx-settle: 800ms; /* hero imagery settling in */
+  --lx-stagger: 80ms; /* gap between items in a staggered group */
+  --lx-rise: 24px; /* reveal travel distance */
+}
+
+@media (max-width: 767px) {
+  :root {
+    --lx-rise: 14px;
+  }
 }
 
 /*
@@ -92,7 +100,7 @@ body {
 }
 
 [data-reveal='rise'] {
-  transform: translate3d(0, 24px, 0);
+  transform: translate3d(0, var(--lx-rise), 0);
 }
 
 [data-reveal='image'] {
@@ -102,6 +110,91 @@ body {
 [data-reveal][data-revealed='true'] {
   opacity: 1;
   transform: none;
+}
+
+/*
+ * Staggered groups (section headings): the container stays put and its
+ * children enter one after another. Keyframes rather than transitions, so
+ * each child keeps its own hover/press transitions.
+ */
+[data-reveal][data-stagger] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-stagger] > * {
+  opacity: 0;
+}
+
+[data-stagger][data-revealed='true'] > * {
+  animation: lx-rise var(--lx-reveal) var(--lx-ease) both;
+  animation-delay: calc(var(--lx-reveal-delay, 0ms) + var(--lx-stagger-index, 0) * var(--lx-stagger));
+}
+
+[data-stagger] > :nth-child(2) {
+  --lx-stagger-index: 1;
+}
+
+[data-stagger] > :nth-child(3) {
+  --lx-stagger-index: 2;
+}
+
+[data-stagger] > :nth-child(4) {
+  --lx-stagger-index: 3;
+}
+
+[data-stagger] > :nth-child(n + 5) {
+  --lx-stagger-index: 4;
+}
+
+@keyframes lx-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, calc(var(--lx-rise) * 0.6), 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+ * Images inside a revealed group settle from a slight zoom. Uses the
+ * `transform` property via keyframes so hover zooms (Tailwind `scale`) still
+ * transition independently. Parents clip with overflow-hidden, so no shift.
+ */
+[data-reveal]:not([data-revealed='true']) [data-settle] {
+  transform: scale(1.06);
+}
+
+[data-reveal][data-revealed='true'] [data-settle] {
+  animation: lx-image-settle 1100ms var(--lx-ease) both;
+  animation-delay: var(--lx-reveal-delay, 0ms);
+}
+
+@keyframes lx-image-settle {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Header eases in once on first load; the layout keeps it mounted across routes. */
+@keyframes lx-header-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-header-enter] {
+  animation: lx-header-enter 600ms var(--lx-ease) both;
 }
 
 /* ---------------------------------------------------------------------------
@@ -174,7 +267,10 @@ body {
 
   [data-reveal],
   [data-enter],
-  [data-page-transition] {
+  [data-page-transition],
+  [data-stagger] > *,
+  [data-settle],
+  [data-header-enter] {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;

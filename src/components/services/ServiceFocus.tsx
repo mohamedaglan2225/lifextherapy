@@ -9,7 +9,7 @@ export function ServiceFocus({ service }: { service: Service }) {
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <Reveal>
+            <Reveal stagger>
               <Eyebrow className="mb-4">Focus Areas</Eyebrow>
               <SectionTitle className="mb-10 text-3xl text-charcoal lg:text-4xl">
                 Where the work goes

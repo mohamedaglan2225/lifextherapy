@@ -10,7 +10,7 @@ export function SessionPricing({ service }: { service: Service }) {
     <section className="bg-ivory py-20 lg:py-28">
       <Container>
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-          <Reveal>
+          <Reveal stagger>
             <Eyebrow className="mb-4">Session Options</Eyebrow>
             <SectionTitle className="text-charcoal">
               Lengths &amp;
