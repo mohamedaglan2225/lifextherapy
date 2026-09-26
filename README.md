@@ -4,7 +4,6 @@ Marketing site for Life X Therapy — massage therapy & bodywork.
 Next.js (App Router) + TypeScript + Tailwind CSS.
 
 ## Local development
-
 ```bash
 npm install
 npm run dev
