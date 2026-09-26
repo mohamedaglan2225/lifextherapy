@@ -11,7 +11,6 @@ npm run dev
 ```
 
 ## Configuration
-
 Copy `.env.example` to `.env.local` and set:
 
 - `NEXT_PUBLIC_SITE_URL` — production domain, used for canonical URLs, Open
