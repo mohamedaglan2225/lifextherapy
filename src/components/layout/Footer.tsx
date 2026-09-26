@@ -3,7 +3,7 @@ import { businessPlaceholders, navLinks, siteConfig } from '@/config/site'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { Container } from '@/components/ui/Container'
 import { Icon } from '@/components/ui/Icon'
-import { Wordmark } from '@/components/ui/Wordmark'
+import { Logo } from '@/components/ui/Logo'
 
 export function Footer() {
   return (
@@ -11,7 +11,7 @@ export function Footer() {
       <Container>
         <div className="mb-16 grid gap-12 md:grid-cols-3">
           <div>
-            <Wordmark tone="light" size="lg" className="mb-4" />
+            <Logo className="mb-5 h-12" sizes="48px" />
             <p className="max-w-xs text-xs font-light leading-relaxed text-bronze-dark">
               Personalized massage therapy and bodywork designed around your body, comfort, and goals.
             </p>

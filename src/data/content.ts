@@ -99,31 +99,6 @@ export const featuredServices: FeaturedService[] = [
   },
 ]
 
-export type Testimonial = {
-  quote: string
-  name: string
-  service: string
-}
-
-/** Placeholder content only — no real client reviews have been supplied. */
-export const testimonials: Testimonial[] = [
-  {
-    quote: 'Client testimonial placeholder. Share your experience with Life X Therapy here.',
-    name: 'Client Name',
-    service: 'Therapeutic Massage',
-  },
-  {
-    quote: 'Client testimonial placeholder. Share your experience with Life X Therapy here.',
-    name: 'Client Name',
-    service: 'Swedish Massage',
-  },
-  {
-    quote: 'Client testimonial placeholder. Share your experience with Life X Therapy here.',
-    name: 'Client Name',
-    service: 'Hot Stone Massage',
-  },
-]
-
 export type BookingStep = {
   number: string
   title: string

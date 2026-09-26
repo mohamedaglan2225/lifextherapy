@@ -6,14 +6,11 @@ import { usePathname } from 'next/navigation'
 import { navLinks, routes, siteConfig } from '@/config/site'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { Container } from '@/components/ui/Container'
-import { Wordmark } from '@/components/ui/Wordmark'
+import { Logo } from '@/components/ui/Logo'
 import { MobileNavigation } from './MobileNavigation'
 import { cn } from '@/lib/cn'
 
 const MOBILE_NAV_ID = 'mobile-navigation'
-
-/** Only the home page puts a full-bleed hero underneath the header. */
-const OVERLAY_ROUTES = new Set<string>([routes.home])
 
 function isActive(pathname: string, href: string) {
   return href === routes.home ? pathname === routes.home : pathname.startsWith(href)
@@ -21,7 +18,6 @@ function isActive(pathname: string, href: string) {
 
 export function Header() {
   const pathname = usePathname()
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [menuPathname, setMenuPathname] = useState(pathname)
 
@@ -30,13 +26,6 @@ export function Header() {
     setMenuPathname(pathname)
     setMenuOpen(false)
   }
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -51,24 +40,17 @@ export function Header() {
     }
   }, [menuOpen])
 
-  const overlay = OVERLAY_ROUTES.has(pathname)
-  const solid = !overlay || scrolled || menuOpen
-  const elevated = scrolled && !menuOpen
-
   return (
     <>
       <header
         className={cn(
-          'fixed inset-x-0 top-0 z-50 transition-premium duration-[var(--lx-normal)]',
-          solid
-            ? 'border-b border-border bg-ivory/95 backdrop-blur-sm'
-            : 'border-b border-transparent bg-transparent',
-          elevated && 'shadow-[0_1px_24px_-16px_rgba(29,27,25,0.55)]',
+          'fixed inset-x-0 top-0 z-50 border-b border-border bg-ivory/95 backdrop-blur-sm transition-premium duration-[var(--lx-normal)]',
+          !menuOpen && 'shadow-[0_1px_24px_-16px_rgba(29,27,25,0.55)]',
         )}
       >
         <Container className="flex h-16 items-center justify-between lg:h-20">
           <Link href={routes.home} aria-label={`${siteConfig.name} — home`}>
-            <Wordmark />
+            <Logo className="h-11 lg:h-14" sizes="56px" priority />
           </Link>
 
           <nav aria-label="Primary" className="hidden md:block">

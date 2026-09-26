@@ -9,7 +9,6 @@ import { PhilosophySection } from '@/components/sections/PhilosophySection'
 import { BenefitsSection } from '@/components/sections/BenefitsSection'
 import { FeaturedServices } from '@/components/sections/FeaturedServices'
 import { AboutSection } from '@/components/sections/AboutSection'
-import { Testimonials } from '@/components/sections/Testimonials'
 import { BookingSteps } from '@/components/sections/BookingSteps'
 import { FAQ } from '@/components/sections/FAQ'
 import { FinalCTA } from '@/components/sections/FinalCTA'
@@ -34,7 +33,6 @@ export default function HomePage() {
       <BenefitsSection />
       <FeaturedServices />
       <AboutSection />
-      <Testimonials />
       <BookingSteps />
       <FAQ items={homeFaqs} viewAllHref={routes.faq} />
       <FinalCTA />

@@ -1,5 +1,4 @@
 import { routes, siteConfig } from '@/config/site'
-import { TherapistCard } from '@/components/about/TherapistCard'
 import { ArrowLink } from '@/components/ui/ArrowLink'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
@@ -10,14 +9,17 @@ export function AboutSection() {
   return (
     <section className="bg-ivory-dark py-20 lg:py-28">
       <Container>
-        <Reveal className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <Reveal className="grid gap-8 lg:grid-cols-2 lg:gap-20">
           <div>
             <Eyebrow className="mb-6">About</Eyebrow>
-            <SectionTitle className="mb-6 text-charcoal">
+            <SectionTitle className="text-charcoal">
               Bodywork
               <br />
               <em>With Intention</em>
             </SectionTitle>
+          </div>
+
+          <div className="lg:pt-10">
             <p className="mb-4 text-base font-light leading-relaxed text-bronze-dark">
               {siteConfig.name} is built around one idea: the session should fit the person on the
               table. Every appointment starts with a conversation and is adjusted as it goes.
@@ -30,8 +32,6 @@ export function AboutSection() {
               Learn About {siteConfig.name}
             </ArrowLink>
           </div>
-
-          <TherapistCard />
         </Reveal>
       </Container>
     </section>
