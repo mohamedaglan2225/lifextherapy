@@ -34,18 +34,14 @@ owner's own session and checked by the database.
 
 ### 2. Database, storage and permissions
 
-In **SQL Editor → New query**, run each file's full contents, in order:
+1. Open `supabase/setup-all.sql`, select all, and paste it into **SQL Editor → New query**. Click **Run**. It contains, in order, `migrations/20261014000000_cms_mvp.sql`, `migrations/20261020000000_cms_documents.sql` and `seed.sql` (regenerate it with `npm run cms:setup-sql` after changing any of them).
+2. In a new query, paste and run `supabase/tests/rls_check.sql`. It must end with one row reading **`all CMS checks passed`**. It runs in a rolled-back transaction and leaves nothing behind. If it reports `FAIL: …`, stop and report the message.
 
-1. `supabase/migrations/20261014000000_cms_mvp.sql`: admin membership, the two image buckets and their policies.
-2. `supabase/migrations/20261020000000_cms_documents.sql`: content tables, row level security, and the save, publish, history and media functions.
-3. `supabase/seed.sql`: the website's current content.
-4. `supabase/tests/rls_check.sql`: must end with one row reading **`all CMS checks passed`**. It runs in a rolled-back transaction and leaves nothing behind. If it reports `FAIL: …`, stop and report the message.
-
-Every file is safe to run again. The seed never overwrites content that already
-exists. On a project where the earlier MVP dashboard was used, run only the files
-not applied yet (2–4). The seed then carries over the MVP's hero, contact details,
-social links, promotions and uploaded images instead of the defaults. The old MVP
-tables stay in place, unused.
+`setup-all.sql` is safe to run again, on a fresh project or on one where the
+earlier MVP was applied. The seed never overwrites content that already exists. On
+an MVP project it carries over the MVP's hero, contact details, social links,
+promotions and uploaded images instead of the defaults. The old MVP tables stay in
+place, unused and read-only.
 
 ### 3. Sign-in settings
 

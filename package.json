@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "cms:seed": "node scripts/generate-seed.mjs"
+    "cms:seed": "node scripts/generate-seed.mjs",
+    "cms:setup-sql": "node scripts/generate-setup-sql.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.7",
