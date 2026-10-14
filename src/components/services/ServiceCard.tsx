@@ -1,16 +1,16 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
-import type { Service } from '@/data/services'
-import { formatPrice } from '@/data/services'
+import type { ServiceDoc } from '@/lib/cms/documents'
+import { formatPrice } from '@/lib/cms/format'
+import { CmsImage } from '@/components/cms/CmsImage'
 import { routes } from '@/config/site'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { SessionOption } from './SessionOption'
 
 type ServiceCardProps = {
-  service: Service
+  service: ServiceDoc
   /** Above-the-fold cards can opt into eager loading. */
   priority?: boolean
   sizes?: string
@@ -34,8 +34,8 @@ export function ServiceCard({
         aria-hidden="true"
         className="relative block h-48 overflow-hidden bg-ivory-dark"
       >
-        <Image
-          src={service.image}
+        <CmsImage
+          src={service.image.src}
           alt=""
           fill
           priority={priority}
@@ -86,8 +86,7 @@ export function ServiceCard({
         <BookingLink
           variant="dark"
           size="block"
-          service={service.slug}
-          minutes={selected.minutes}
+          href={selected.vagaroUrl || undefined}
           label={`Book ${service.name}, ${selected.minutes} minute session, ${formatPrice(selected.price)} — continues to Vagaro`}
         >
           Book {service.shortName}

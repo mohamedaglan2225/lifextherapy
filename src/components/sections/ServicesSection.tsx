@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { services as allServices, type Service } from '@/data/services'
+import type { ServiceItem } from '@/lib/cms/published'
 import { ServiceCard } from '@/components/services/ServiceCard'
 import { ArrowLink } from '@/components/ui/ArrowLink'
 import { Container } from '@/components/ui/Container'
@@ -8,7 +8,7 @@ import { Eyebrow, SectionTitle } from '@/components/ui/SectionHeading'
 import { cn } from '@/lib/cn'
 
 type ServicesSectionProps = {
-  items?: Service[]
+  items: ServiceItem[]
   eyebrow?: string
   title?: ReactNode
   intro?: ReactNode
@@ -18,12 +18,12 @@ type ServicesSectionProps = {
 }
 
 export function ServicesSection({
-  items = allServices,
+  items,
   eyebrow,
   title,
   intro,
   viewAllHref,
-  viewAllLabel = 'View All Services',
+  viewAllLabel,
   className,
 }: ServicesSectionProps) {
   const columns = items.length >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
@@ -51,7 +51,7 @@ export function ServicesSection({
           ))}
         </ul>
 
-        {viewAllHref && (
+        {viewAllHref && viewAllLabel && (
           <Reveal className="mt-12">
             <ArrowLink href={viewAllHref}>{viewAllLabel}</ArrowLink>
           </Reveal>

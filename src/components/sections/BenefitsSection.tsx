@@ -1,28 +1,31 @@
-import { benefits } from '@/data/content'
+import { Display } from '@/components/cms/Display'
 import { Container } from '@/components/ui/Container'
-import { Icon } from '@/components/ui/Icon'
+import { Icon, type IconName } from '@/components/ui/Icon'
 import { Reveal } from '@/components/ui/Reveal'
 import { Eyebrow, SectionTitle } from '@/components/ui/SectionHeading'
-import { siteConfig } from '@/config/site'
 
-export function BenefitsSection() {
+export type BenefitsData = {
+  eyebrow: string
+  title: string
+  items: Array<{ icon: IconName; title: string; body: string }>
+}
+
+export function BenefitsSection({ data }: { data: BenefitsData }) {
   return (
     <section className="bg-offwhite py-20 lg:py-28">
       <Container>
         <div className="grid items-start gap-16 lg:grid-cols-2">
           <Reveal stagger>
-            <Eyebrow className="mb-6">Why Choose Us</Eyebrow>
+            {data.eyebrow && <Eyebrow className="mb-6">{data.eyebrow}</Eyebrow>}
             <SectionTitle className="text-charcoal">
-              Why Choose
-              <br />
-              {siteConfig.name}
+              <Display text={data.title} />
             </SectionTitle>
             <div aria-hidden="true" className="mt-8 h-px w-12 bg-bronze" />
           </Reveal>
 
           <ul className="flex flex-col gap-8">
-            {benefits.map((benefit, index) => (
-              <Reveal as="li" key={benefit.title} delay={index * 70} className="flex items-start gap-5">
+            {data.items.map((benefit, index) => (
+              <Reveal as="li" key={`${index}-${benefit.title}`} delay={index * 70} className="flex items-start gap-5">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-border text-bronze">
                   <Icon name={benefit.icon} size={24} strokeWidth={1.4} />
                 </span>

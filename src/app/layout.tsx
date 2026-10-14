@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next'
 import { DM_Serif_Display, Manrope } from 'next/font/google'
 import './globals.css'
 import { siteConfig } from '@/config/site'
+import { siteMetadata } from '@/lib/cms/metadata'
+import { getSettings } from '@/lib/cms/published'
 
 const serif = DM_Serif_Display({
   subsets: ['latin'],
@@ -18,29 +20,8 @@ const sans = Manrope({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  applicationName: siteConfig.name,
-  alternates: { canonical: '/' },
-  robots: { index: true, follow: true },
-  openGraph: {
-    type: 'website',
-    siteName: siteConfig.name,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    url: '/',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.title,
-    description: siteConfig.description,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  return siteMetadata(await getSettings(), siteConfig.url)
 }
 
 export const viewport: Viewport = {

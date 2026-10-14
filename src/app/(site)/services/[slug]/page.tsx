@@ -1,71 +1,65 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { getRelatedServices, getService, services } from '@/data/services'
-import { sessionFaqs } from '@/data/content'
+import { notFound, permanentRedirect, redirect } from 'next/navigation'
 import { routes } from '@/config/site'
-import { ServiceHero } from '@/components/services/ServiceHero'
-import { ServiceEditorial } from '@/components/services/ServiceEditorial'
-import { ServiceFocus } from '@/components/services/ServiceFocus'
-import { SessionPricing } from '@/components/services/SessionPricing'
-import { RelatedServices } from '@/components/services/RelatedServices'
-import { FAQ } from '@/components/sections/FAQ'
-import { FinalCTA } from '@/components/sections/FinalCTA'
+import { shareImages } from '@/lib/cms/metadata'
+import { getAllServices, getPage, getServices, getSettings, type ServiceItem } from '@/lib/cms/published'
+import { SectionRenderer } from '@/components/cms/SectionRenderer'
 
 type ServicePageProps = {
   params: Promise<{ slug: string }>
 }
 
-export function generateStaticParams() {
-  return services.map((service) => ({ slug: service.slug }))
+/** Services published at build time are prerendered; newer ones render on first visit. */
+export async function generateStaticParams() {
+  return (await getServices()).map((service) => ({ slug: service.slug }))
+}
+
+type Resolution = { service: ServiceItem } | { redirectTo: string; permanent: boolean } | null
+
+async function resolve(slug: string): Promise<Resolution> {
+  const all = await getAllServices()
+  const match = all.find((service) => service.slug === slug)
+  if (match) return match.status === 'active' ? { service: match } : { redirectTo: routes.services, permanent: false }
+  // An address that changed keeps working: old addresses redirect permanently.
+  const renamed = all.find((service) => service.previousSlugs.includes(slug))
+  if (renamed) {
+    return renamed.status === 'active'
+      ? { redirectTo: routes.service(renamed.slug), permanent: true }
+      : { redirectTo: routes.services, permanent: false }
+  }
+  return null
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params
-  const service = getService(slug)
-
-  if (!service) return {}
-
+  const [resolution, settings] = await Promise.all([resolve(slug), getSettings()])
+  if (!resolution || !('service' in resolution)) return {}
+  const { service } = resolution
   const url = routes.service(service.slug)
+  const title = service.seo.title || service.name
 
   return {
-    title: service.name,
-    description: service.metaDescription,
+    title,
+    description: service.seo.description,
     alternates: { canonical: url },
     openGraph: {
-      title: `${service.name} | Life X Therapy`,
-      description: service.metaDescription,
+      title: `${title} | ${settings.siteName}`,
+      description: service.seo.description,
       url,
+      images: shareImages(settings, service.seo.shareImage),
     },
   }
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params
-  const service = getService(slug)
+  const resolution = await resolve(slug)
+  if (!resolution) notFound()
+  if ('redirectTo' in resolution) {
+    if (resolution.permanent) permanentRedirect(resolution.redirectTo)
+    redirect(resolution.redirectTo)
+  }
 
-  if (!service) notFound()
-
-  return (
-    <>
-      <ServiceHero service={service} />
-      <ServiceEditorial service={service} />
-      <ServiceFocus service={service} />
-      <SessionPricing service={service} />
-      <RelatedServices services={getRelatedServices(service.slug)} />
-      <FAQ
-        items={sessionFaqs}
-        eyebrow="Good to know"
-        title={
-          <>
-            Before You
-            <br />
-            Book
-          </>
-        }
-        intro="A few things worth knowing ahead of your appointment."
-        viewAllHref={routes.faq}
-      />
-      <FinalCTA />
-    </>
-  )
+  const [layout, settings] = await Promise.all([getPage('service'), getSettings()])
+  return <SectionRenderer page="service" sections={layout.sections} settings={settings} service={resolution.service} />
 }

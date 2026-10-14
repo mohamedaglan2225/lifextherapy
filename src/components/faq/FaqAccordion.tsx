@@ -1,7 +1,6 @@
 'use client'
 
 import { useId, useState } from 'react'
-import type { Faq } from '@/data/content'
 import { Icon } from '@/components/ui/Icon'
 import { cn } from '@/lib/cn'
 
@@ -59,7 +58,9 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   )
 }
 
-export function FaqAccordion({ items, className }: { items: Faq[]; className?: string }) {
+export type FaqEntry = { question: string; answer: string }
+
+export function FaqAccordion({ items, className }: { items: FaqEntry[]; className?: string }) {
   return (
     <div className={cn('border-t border-border', className)}>
       {items.map((faq) => (

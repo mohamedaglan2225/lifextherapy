@@ -1,32 +1,35 @@
-import { Fragment } from 'react'
-import Image from 'next/image'
-import { publishedImageSrc } from '@/lib/cms/images'
-import type { HomeHero } from '@/lib/cms/schema'
+import type { ImageValue, LinkValue } from '@/lib/cms/fields'
+import { CmsImage } from '@/components/cms/CmsImage'
+import { Display } from '@/components/cms/Display'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { ButtonLink } from '@/components/ui/ButtonLink'
 import { Container } from '@/components/ui/Container'
 import { Enter } from '@/components/ui/Enter'
 import { ParallaxLayer } from '@/components/ui/ParallaxLayer'
 
-export function Hero({ hero }: { hero: HomeHero }) {
-  const imageSrc = publishedImageSrc(hero.image)
-  const headlineLines = hero.headline.split('\n')
+export type HeroData = {
+  eyebrow: string
+  headline: string
+  body: string
+  image: ImageValue
+  primaryLabel: string
+  secondary: LinkValue
+}
 
+export function Hero({ data }: { data: HeroData }) {
   return (
     <section className="relative flex min-h-svh items-end overflow-hidden pb-24 sm:pb-16 lg:pb-24">
       <div className="absolute inset-0 overflow-hidden">
         <ParallaxLayer className="absolute inset-x-0 -top-[10%] h-[120%] will-change-transform">
           <Enter variant="settle" className="relative h-full w-full">
-            {imageSrc && (
-              <Image
-                src={imageSrc}
-                alt={hero.imageAlt}
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover object-center"
-              />
-            )}
+            <CmsImage
+              src={data.image.src}
+              alt={data.image.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
           </Enter>
         </ParallaxLayer>
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/30 to-transparent" />
@@ -37,36 +40,25 @@ export function Hero({ hero }: { hero: HomeHero }) {
         <div className="max-w-2xl">
           <Enter delay={80}>
             <p className="mb-6 text-xs font-medium uppercase tracking-[0.25em] text-border">
-              {hero.eyebrow}
+              {data.eyebrow}
             </p>
           </Enter>
           <Enter delay={160}>
             <h1 className="mb-6 font-serif text-5xl leading-[1.05] text-offwhite sm:text-6xl lg:text-7xl">
-              {headlineLines.map((line, index) => (
-                <Fragment key={index}>
-                  {index > 0 && <br />}
-                  {line}
-                </Fragment>
-              ))}
-              {hero.headlineEmphasis && (
-                <>
-                  <br />
-                  <em>{hero.headlineEmphasis}</em>
-                </>
-              )}
+              <Display text={data.headline} />
             </h1>
           </Enter>
           <Enter delay={260}>
             <p className="mb-10 max-w-md text-base font-light leading-relaxed text-ivory-dark lg:text-lg">
-              {hero.body}
+              {data.body}
             </p>
           </Enter>
           <Enter delay={360}>
             <div className="flex flex-col gap-4 sm:flex-row">
               {/* The booking destination always comes from the Vagaro config; only the label is editable. */}
-              <BookingLink>{hero.primaryLabel}</BookingLink>
-              <ButtonLink href={hero.secondaryHref} variant="outlineLight">
-                {hero.secondaryLabel}
+              <BookingLink>{data.primaryLabel}</BookingLink>
+              <ButtonLink href={data.secondary.href} variant="outlineLight">
+                {data.secondary.label}
               </ButtonLink>
             </div>
           </Enter>

@@ -1,37 +1,14 @@
 import type { Metadata } from 'next'
-import { routes } from '@/config/site'
-import { getContact } from '@/lib/cms/published'
-import { PageHeader } from '@/components/ui/PageHeader'
-import { ContactSection } from '@/components/sections/ContactSection'
-import { FinalCTA } from '@/components/sections/FinalCTA'
+import { pageMetadata } from '@/lib/cms/metadata'
+import { getPage, getSettings } from '@/lib/cms/published'
+import { SectionRenderer } from '@/components/cms/SectionRenderer'
 
-const description =
-  'Get in touch with Life X Therapy — phone, email, address, business hours, and online booking through Vagaro.'
-
-export const metadata: Metadata = {
-  title: 'Contact',
-  description,
-  alternates: { canonical: routes.contact },
-  openGraph: {
-    title: 'Contact | Life X Therapy',
-    description,
-    url: routes.contact,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const [page, settings] = await Promise.all([getPage('contact'), getSettings()])
+  return pageMetadata('contact', page, settings)
 }
 
 export default async function ContactPage() {
-  const contact = await getContact()
-
-  return (
-    <>
-      <PageHeader
-        eyebrow="Get in Touch"
-        title="Contact"
-        intro="Questions before you book, or prefer to talk it through first? Reach out and we’ll get back to you."
-        breadcrumbs={[{ label: 'Home', href: routes.home }, { label: 'Contact' }]}
-      />
-      <ContactSection contact={contact} />
-      <FinalCTA />
-    </>
-  )
+  const [page, settings] = await Promise.all([getPage('contact'), getSettings()])
+  return <SectionRenderer page="contact" sections={page.sections} settings={settings} />
 }

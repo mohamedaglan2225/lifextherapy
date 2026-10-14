@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import type { Service } from '@/data/services'
-import { formatPrice, startingPrice } from '@/data/services'
+import type { ServiceDoc } from '@/lib/cms/documents'
+import { formatPrice, startingPrice } from '@/lib/cms/format'
+import { CmsImage } from '@/components/cms/CmsImage'
 import { routes } from '@/config/site'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
@@ -9,12 +9,12 @@ import { Eyebrow, SectionTitle } from '@/components/ui/SectionHeading'
 
 export function RelatedServices({
   services,
-  eyebrow = 'Keep Exploring',
-  title = 'Explore Other Services',
+  eyebrow,
+  title,
 }: {
-  services: Service[]
-  eyebrow?: string
-  title?: string
+  services: ServiceDoc[]
+  eyebrow: string
+  title: string
 }) {
   if (services.length === 0) return null
 
@@ -22,7 +22,7 @@ export function RelatedServices({
     <section className="bg-offwhite py-20 lg:py-28">
       <Container>
         <Reveal stagger className="mb-12">
-          <Eyebrow className="mb-4">{eyebrow}</Eyebrow>
+          {eyebrow && <Eyebrow className="mb-4">{eyebrow}</Eyebrow>}
           <SectionTitle className="text-charcoal">{title}</SectionTitle>
         </Reveal>
 
@@ -34,8 +34,8 @@ export function RelatedServices({
                 className="group flex h-full flex-col overflow-hidden rounded-sm border border-border bg-ivory transition-premium duration-[var(--lx-normal)] hover:border-bronze hover:shadow-[0_20px_44px_-28px_rgba(29,27,25,0.45)] motion-safe:hover:-translate-y-1"
               >
                 <div className="relative aspect-4/3 overflow-hidden bg-ivory-dark">
-                  <Image
-                    src={service.image}
+                  <CmsImage
+                    src={service.image.src}
                     alt=""
                     fill
                     loading="lazy"

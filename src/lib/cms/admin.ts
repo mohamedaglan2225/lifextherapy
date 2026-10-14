@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { MEDIA_DRAFT_BUCKET, MEDIA_PUBLIC_BUCKET } from './config'
-import { isUploadedImage } from './schema'
+import { isUploadedImage } from './fields'
 
 export type AdminSession = {
   supabase: SupabaseClient

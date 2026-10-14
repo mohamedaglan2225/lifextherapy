@@ -1,29 +1,14 @@
 import type { Metadata } from 'next'
-import { legalPagesPublished, routes } from '@/config/site'
-import { LegalPage } from '@/components/legal/LegalPage'
+import { pageMetadata } from '@/lib/cms/metadata'
+import { getPage, getSettings } from '@/lib/cms/published'
+import { SectionRenderer } from '@/components/cms/SectionRenderer'
 
-export const metadata: Metadata = {
-  title: 'Terms',
-  description: 'Terms of use for Life X Therapy.',
-  alternates: { canonical: routes.terms },
-  robots: { index: legalPagesPublished, follow: true },
+export async function generateMetadata(): Promise<Metadata> {
+  const [page, settings] = await Promise.all([getPage('terms'), getSettings()])
+  return pageMetadata('terms', page, settings)
 }
 
-export default function TermsPage() {
-  return (
-    <LegalPage
-      title="Terms"
-      intro="This page is ready for your terms of use. The wording below is a placeholder."
-    >
-      <p>[Terms placeholder — replace with the full terms of use.]</p>
-      <p>
-        [Cover use of the website, appointment and payment terms, and any policies that apply to
-        bookings made through Vagaro.]
-      </p>
-      <p>
-        [No cancellation, rescheduling or refund policy has been supplied yet — add it here and
-        update the matching FAQ answer.]
-      </p>
-    </LegalPage>
-  )
+export default async function TermsPage() {
+  const [page, settings] = await Promise.all([getPage('terms'), getSettings()])
+  return <SectionRenderer page="terms" sections={page.sections} settings={settings} />
 }

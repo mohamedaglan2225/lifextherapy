@@ -1,14 +1,24 @@
-import Image from 'next/image'
-import { BookingLink } from '@/components/ui/BookingLink'
+import type { ButtonValue, ImageValue } from '@/lib/cms/fields'
+import { CmsButton } from '@/components/cms/CmsButton'
+import { CmsImage } from '@/components/cms/CmsImage'
+import { Display } from '@/components/cms/Display'
 import { Reveal } from '@/components/ui/Reveal'
 import { Eyebrow } from '@/components/ui/SectionHeading'
 
-export function FinalCTA() {
+export type CtaData = {
+  image: ImageValue
+  eyebrow: string
+  title: string
+  body: string
+  button: ButtonValue
+}
+
+export function FinalCTA({ data }: { data: CtaData }) {
   return (
     <section className="relative overflow-hidden py-24 lg:py-36">
       <div className="absolute inset-0">
-        <Image
-          src="/images/booking-cta.jpg"
+        <CmsImage
+          src={data.image.src}
           alt=""
           aria-hidden="true"
           fill
@@ -20,14 +30,16 @@ export function FinalCTA() {
       </div>
 
       <Reveal stagger className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-10">
-        <Eyebrow className="mb-6">Ready to Begin</Eyebrow>
+        {data.eyebrow && <Eyebrow className="mb-6">{data.eyebrow}</Eyebrow>}
         <h2 className="mb-6 font-serif text-5xl leading-tight text-offwhite lg:text-6xl">
-          Ready to Feel Better?
+          <Display text={data.title} />
         </h2>
-        <p className="mx-auto mb-10 max-w-xl text-base font-light leading-relaxed text-border lg:text-lg">
-          Choose the massage and session length that works for you and book your appointment online.
-        </p>
-        <BookingLink size="lg">Book Your Session</BookingLink>
+        {data.body && (
+          <p className="mx-auto mb-10 max-w-xl text-base font-light leading-relaxed text-border lg:text-lg">
+            {data.body}
+          </p>
+        )}
+        <CmsButton button={data.button} size="lg" />
       </Reveal>
     </section>
   )

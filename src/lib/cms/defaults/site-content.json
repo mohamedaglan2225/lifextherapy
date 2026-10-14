@@ -1,0 +1,1331 @@
+{
+  "settings": {
+    "siteName": "Life X Therapy",
+    "tagline": "Massage & Bodywork",
+    "logo": {
+      "src": "/images/logo-mark.png",
+      "alt": "Life X Therapy",
+      "width": 499,
+      "height": 505
+    },
+    "contact": {
+      "phone": "(321) 467-4569",
+      "email": "",
+      "address": "1541 S Wickham Rd, West Melbourne, FL 32904"
+    },
+    "hours": [
+      {
+        "day": "Monday – Friday",
+        "hours": "[Hours placeholder]"
+      },
+      {
+        "day": "Saturday",
+        "hours": "[Hours placeholder]"
+      },
+      {
+        "day": "Sunday",
+        "hours": "[Hours placeholder]"
+      }
+    ],
+    "social": {
+      "instagramUrl": "",
+      "facebookUrl": ""
+    },
+    "navigation": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "FAQ",
+        "href": "/faq"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "booking": {
+      "businessUrl": "https://www.vagaro.com/lifextherapy",
+      "headerLabel": "Book Now",
+      "menuLabel": "Book Now",
+      "mobileBarLabel": "Book a Session"
+    },
+    "footer": {
+      "blurb": "Personalized massage therapy and bodywork designed around your body, comfort, and goals.",
+      "navHeading": "Navigate",
+      "bookHeading": "Book a Session",
+      "bookLabel": "Book Now",
+      "followHeading": "Follow",
+      "legalLinks": [
+        {
+          "label": "Privacy Policy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Terms",
+          "href": "/terms"
+        }
+      ]
+    },
+    "seo": {
+      "defaultTitle": "Life X Therapy | Massage Therapy & Bodywork",
+      "description": "Personalized massage therapy and bodywork designed to relieve tension, restore movement, and help you feel your best.",
+      "shareImage": {
+        "src": "",
+        "alt": ""
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "seo": {
+        "title": "",
+        "description": "",
+        "shareImage": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      "indexable": true,
+      "sections": [
+        {
+          "id": "151eab2a-5c94-4da8-af92-417192bafed2",
+          "type": "hero",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Massage Therapy & Bodywork",
+            "headline": "Feel Better.\nMove Better.\n*Live Calmer.*",
+            "body": "Personalized massage therapy and bodywork designed to relieve tension, restore movement, and help you feel your best.",
+            "image": {
+              "src": "/images/hero-massage.jpg",
+              "alt": "Massage therapist working on a client in a warmly lit studio"
+            },
+            "primaryLabel": "Book a Session",
+            "secondary": {
+              "label": "Explore Services",
+              "href": "/services",
+              "ariaLabel": ""
+            }
+          }
+        },
+        {
+          "id": "6e76b989-e8f3-4c87-bffc-700639a6ba3b",
+          "type": "trust_bar",
+          "hidden": false,
+          "data": {
+            "label": "Why clients choose Life X Therapy",
+            "items": [
+              {
+                "icon": "heart",
+                "title": "Personalized Sessions",
+                "detail": "Tailored to your body and goals"
+              },
+              {
+                "icon": "clock",
+                "title": "Flexible Session Lengths",
+                "detail": "60, 90, or 120 minute options"
+              },
+              {
+                "icon": "calendar",
+                "title": "Easy Online Booking",
+                "detail": "Schedule through Vagaro anytime"
+              },
+              {
+                "icon": "shield",
+                "title": "Professional Bodywork",
+                "detail": "Comfort-focused, evidence-informed care"
+              }
+            ]
+          }
+        },
+        {
+          "id": "7edd51d7-939a-4843-b5d6-8a1121369558",
+          "type": "promotions",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Current Offers",
+            "title": "Promotions"
+          }
+        },
+        {
+          "id": "988c5dcf-b4de-4b7c-b27a-bb2f5ac1f3d4",
+          "type": "services_grid",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Our Services",
+            "title": "Massage & Bodywork Services",
+            "intro": "Choose the session that best fits your body, goals, and schedule.",
+            "show": "featured",
+            "viewAll": {
+              "label": "View All Services",
+              "href": "/services",
+              "ariaLabel": ""
+            },
+            "removeTopSpacing": false
+          }
+        },
+        {
+          "id": "5fdefa9e-507c-4a1e-9d49-d51ad63de6b1",
+          "type": "philosophy",
+          "hidden": false,
+          "data": {
+            "image": {
+              "src": "/images/philosophy.jpg",
+              "alt": "Calm massage therapy environment"
+            },
+            "eyebrow": "Our Philosophy",
+            "title": "Every Body\n*Is Different*",
+            "paragraphs": [
+              "Your session should reflect how your body feels today. Life X Therapy offers personalized bodywork based on your comfort, goals, and preferences.",
+              "Whether you’re managing chronic tension, recovering from activity, navigating pregnancy, or simply seeking rest — the work is shaped around you."
+            ],
+            "link": {
+              "label": "Discover Life X Therapy",
+              "href": "/about",
+              "ariaLabel": ""
+            }
+          }
+        },
+        {
+          "id": "a26e91a6-f913-41ea-8bba-c050efd38932",
+          "type": "benefits",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Why Choose Us",
+            "title": "Why Choose\nLife X Therapy",
+            "items": [
+              {
+                "icon": "sun",
+                "title": "Personalized Sessions",
+                "body": "Each session is shaped around your comfort, your goals, and how you feel that day."
+              },
+              {
+                "icon": "heart",
+                "title": "Comfort-Focused Care",
+                "body": "Your experience and well-being guide every decision made during the session."
+              },
+              {
+                "icon": "activity",
+                "title": "Multiple Techniques",
+                "body": "Swedish, therapeutic, deep tissue, hot stone, sports massage, and prenatal care."
+              },
+              {
+                "icon": "clock",
+                "title": "Flexible Session Lengths",
+                "body": "Choose from 60, 90, or 120 minute sessions depending on your needs and schedule."
+              },
+              {
+                "icon": "calendar",
+                "title": "Easy Online Booking",
+                "body": "Schedule and pay through Vagaro at any time, from any device."
+              }
+            ]
+          }
+        },
+        {
+          "id": "a397ecb8-c8be-4d00-a5e0-3c928f03ed57",
+          "type": "featured_services",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Signature Experiences",
+            "title": "Bodywork Worth Experiencing",
+            "items": [
+              {
+                "service": "therapeutic-massage",
+                "tagline": "Built Around Your Body",
+                "description": "Targeted bodywork that listens. Therapeutic massage goes beyond relaxation — working into the areas that need attention most, adapting pressure and technique to your specific patterns of tension.",
+                "image": {
+                  "src": "/images/deep-pressure.jpg",
+                  "alt": "Therapeutic massage session focused on the upper back"
+                }
+              },
+              {
+                "service": "deep-tissue-massage",
+                "tagline": "For Persistent Tension",
+                "description": "Reaching deeper layers of muscle and connective tissue with deliberate, sustained pressure. Ideal for chronic tension, postural patterns, and areas that haven't responded to lighter work.",
+                "image": {
+                  "src": "/images/deep-tissue.jpg",
+                  "alt": "Therapist working deeply along a client’s leg"
+                }
+              },
+              {
+                "service": "hot-stone-massage",
+                "tagline": "Warmth That Reaches Deep",
+                "description": "Heated stones melt tension in a way hands alone cannot. A profoundly calming experience that combines the warmth of volcanic basalt stones with skilled massage technique.",
+                "image": {
+                  "src": "/images/hot-stone.jpg",
+                  "alt": "Hot stone massage with heated stones resting on the back"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "da1df0fe-5216-4d7d-9bc3-6ee1a51b2969",
+          "type": "about_teaser",
+          "hidden": false,
+          "data": {
+            "eyebrow": "About",
+            "title": "Bodywork\n*With Intention*",
+            "paragraphs": [
+              "Life X Therapy is built around one idea: the session should fit the person on the table. Every appointment starts with a conversation and is adjusted as it goes.",
+              "[Professional bio placeholder — share your background, training, approach, and what brought you to massage therapy.]"
+            ],
+            "link": {
+              "label": "Learn About Life X Therapy",
+              "href": "/about",
+              "ariaLabel": "Learn about Life X Therapy"
+            }
+          }
+        },
+        {
+          "id": "6be6fc65-7548-4b8d-83b0-7de41af9b915",
+          "type": "booking_steps",
+          "hidden": false,
+          "data": {
+            "eyebrow": "How It Works",
+            "title": "Book Your Session",
+            "steps": [
+              {
+                "number": "01",
+                "title": "Choose Your Massage",
+                "body": "Browse our services and select the massage type that best fits your needs."
+              },
+              {
+                "number": "02",
+                "title": "Choose Your Session Length",
+                "body": "Select a 60, 90, or 120 minute session depending on what your body needs."
+              },
+              {
+                "number": "03",
+                "title": "Book Through Vagaro",
+                "body": "Complete your booking and payment securely online through Vagaro."
+              }
+            ],
+            "buttonLabel": "Book Now"
+          }
+        },
+        {
+          "id": "c96981fd-7818-4c53-9c54-221e3ec4f7ba",
+          "type": "faq_preview",
+          "hidden": false,
+          "data": {
+            "eyebrow": "FAQ",
+            "title": "Questions &\nAnswers",
+            "intro": "Can’t find what you’re looking for? Reach out directly and we’ll be happy to help.",
+            "source": "home",
+            "viewAll": {
+              "label": "View All FAQs",
+              "href": "/faq",
+              "ariaLabel": ""
+            }
+          }
+        },
+        {
+          "id": "9deee66b-ef24-4b9f-8573-cc8fb6965b11",
+          "type": "cta",
+          "hidden": false,
+          "data": {
+            "image": {
+              "src": "/images/booking-cta.jpg",
+              "alt": ""
+            },
+            "eyebrow": "Ready to Begin",
+            "title": "Ready to Feel Better?",
+            "body": "Choose the massage and session length that works for you and book your appointment online.",
+            "button": {
+              "label": "Book Your Session",
+              "action": "booking",
+              "href": ""
+            }
+          }
+        }
+      ]
+    },
+    "about": {
+      "seo": {
+        "title": "About",
+        "description": "Life X Therapy is a massage therapy and bodywork practice built around individualized sessions, comfort-focused care and a calm, unhurried environment.",
+        "shareImage": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      "indexable": true,
+      "sections": [
+        {
+          "id": "b06ad2d9-409f-481c-889b-5193ec3f917d",
+          "type": "page_header",
+          "hidden": false,
+          "data": {
+            "eyebrow": "About",
+            "title": "About Life X Therapy",
+            "intro": "A massage therapy and bodywork practice built on individual sessions, comfort-focused care, and a room that feels calm the moment you walk in.",
+            "breadcrumb": "About",
+            "actions": [
+              {
+                "button": {
+                  "label": "Book a Session",
+                  "action": "booking",
+                  "href": ""
+                }
+              },
+              {
+                "button": {
+                  "label": "Explore Services",
+                  "action": "link",
+                  "href": "/services"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "4ed93cd6-4880-4abf-b310-1e91c5d528cb",
+          "type": "about_story",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Our Story",
+            "title": "Bodywork\n*With Intention*",
+            "paragraphs": [
+              "Life X Therapy is built around one idea: the session should fit the person on the table. Two people can book the same treatment and have it run quite differently, because the work follows what the body in front of us is asking for.",
+              "[Professional bio placeholder — share your background, training, approach, and what brought you to massage therapy.]",
+              "[Credentials placeholder — list licences, certifications, training, and professional affiliations here.]"
+            ],
+            "portrait": {
+              "src": "",
+              "alt": ""
+            },
+            "portraitPlaceholder": "[Professional photo placeholder]",
+            "therapistName": "[Therapist Name]",
+            "caption": "[Therapist Name] — [role and credentials placeholder]"
+          }
+        },
+        {
+          "id": "4fa5e4f5-59e1-464b-b3df-9be3286d98c8",
+          "type": "pillars",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Our Approach",
+            "title": "How we work",
+            "intro": "The details that shape every appointment, whichever treatment you book.",
+            "items": [
+              {
+                "icon": "heart",
+                "title": "We start by listening",
+                "body": "Every session opens with a conversation about how you are feeling that day, what you would like attention on, and the pressure you prefer."
+              },
+              {
+                "icon": "sun",
+                "title": "Sessions are individual",
+                "body": "No two bodies hold tension the same way, so the work is shaped around you rather than following a fixed routine."
+              },
+              {
+                "icon": "shield",
+                "title": "Comfort guides the work",
+                "body": "Positioning, draping and pressure are all set to what feels right for you, and adjusted the moment you ask."
+              },
+              {
+                "icon": "clock",
+                "title": "A calm environment",
+                "body": "A quiet, unhurried room with time set aside so that nothing about the session feels rushed."
+              }
+            ]
+          }
+        },
+        {
+          "id": "c42462fb-cc25-4a74-9df4-0bed1a3fadbd",
+          "type": "cta",
+          "hidden": false,
+          "data": {
+            "image": {
+              "src": "/images/booking-cta.jpg",
+              "alt": ""
+            },
+            "eyebrow": "Ready to Begin",
+            "title": "Ready to Feel Better?",
+            "body": "Choose the massage and session length that works for you and book your appointment online.",
+            "button": {
+              "label": "Book Your Session",
+              "action": "booking",
+              "href": ""
+            }
+          }
+        }
+      ]
+    },
+    "services": {
+      "seo": {
+        "title": "Massage Services",
+        "description": "The full Life X Therapy catalog — Swedish, therapeutic, pregnancy, sports, hot stone and deep tissue massage, with session lengths and pricing.",
+        "shareImage": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      "indexable": true,
+      "sections": [
+        {
+          "id": "df2e685f-3892-46b1-9adf-146fdfc13ab7",
+          "type": "page_header",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Our Services",
+            "title": "Massage & Bodywork Services",
+            "intro": "Choose the session that best fits your body, goals, and schedule. Every treatment is available in more than one length — pick the massage first, then the time you have.",
+            "breadcrumb": "Services",
+            "actions": []
+          }
+        },
+        {
+          "id": "111e89b7-e5ab-40bb-8fa5-ea6a88d7c802",
+          "type": "services_grid",
+          "hidden": false,
+          "data": {
+            "eyebrow": "",
+            "title": "",
+            "intro": "",
+            "show": "all",
+            "viewAll": {
+              "label": "",
+              "href": "",
+              "ariaLabel": ""
+            },
+            "removeTopSpacing": true
+          }
+        },
+        {
+          "id": "01e519fb-3239-4026-a1f8-6b818cdc6dc3",
+          "type": "promotions",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Current Offers",
+            "title": "Promotions"
+          }
+        },
+        {
+          "id": "3c9b7aa4-fc5f-4f2a-b9da-04d59e6fad0b",
+          "type": "booking_steps",
+          "hidden": false,
+          "data": {
+            "eyebrow": "How It Works",
+            "title": "Book Your Session",
+            "steps": [
+              {
+                "number": "01",
+                "title": "Choose Your Massage",
+                "body": "Browse our services and select the massage type that best fits your needs."
+              },
+              {
+                "number": "02",
+                "title": "Choose Your Session Length",
+                "body": "Select a 60, 90, or 120 minute session depending on what your body needs."
+              },
+              {
+                "number": "03",
+                "title": "Book Through Vagaro",
+                "body": "Complete your booking and payment securely online through Vagaro."
+              }
+            ],
+            "buttonLabel": "Book Now"
+          }
+        },
+        {
+          "id": "265040b5-587d-4511-9ef3-d9787b0c1d36",
+          "type": "cta",
+          "hidden": false,
+          "data": {
+            "image": {
+              "src": "/images/booking-cta.jpg",
+              "alt": ""
+            },
+            "eyebrow": "Ready to Begin",
+            "title": "Ready to Feel Better?",
+            "body": "Choose the massage and session length that works for you and book your appointment online.",
+            "button": {
+              "label": "Book Your Session",
+              "action": "booking",
+              "href": ""
+            }
+          }
+        }
+      ]
+    },
+    "contact": {
+      "seo": {
+        "title": "Contact",
+        "description": "Get in touch with Life X Therapy — phone, email, address, business hours, and online booking through Vagaro.",
+        "shareImage": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      "indexable": true,
+      "sections": [
+        {
+          "id": "628c8357-bd4e-4744-b875-e11755145d78",
+          "type": "page_header",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Get in Touch",
+            "title": "Contact",
+            "intro": "Questions before you book, or prefer to talk it through first? Reach out and we’ll get back to you.",
+            "breadcrumb": "Contact",
+            "actions": []
+          }
+        },
+        {
+          "id": "34c04132-65e8-4866-8365-f47647188c8d",
+          "type": "contact_details",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Get in Touch",
+            "title": "Contact &\nLocation",
+            "intro": "Questions, or prefer to reach out before booking? We’re happy to help.",
+            "followHeading": "Follow",
+            "hoursHeading": "Business Hours",
+            "mapText": "[Map placeholder]",
+            "callLabel": "Call",
+            "emailLabel": "Email",
+            "bookLabel": "Book Online"
+          }
+        },
+        {
+          "id": "bcb0b7f1-a79f-45a1-ba20-cf3076d60469",
+          "type": "cta",
+          "hidden": false,
+          "data": {
+            "image": {
+              "src": "/images/booking-cta.jpg",
+              "alt": ""
+            },
+            "eyebrow": "Ready to Begin",
+            "title": "Ready to Feel Better?",
+            "body": "Choose the massage and session length that works for you and book your appointment online.",
+            "button": {
+              "label": "Book Your Session",
+              "action": "booking",
+              "href": ""
+            }
+          }
+        }
+      ]
+    },
+    "faq": {
+      "seo": {
+        "title": "FAQ",
+        "description": "Answers to common questions about booking, what to expect during your first session, choosing a massage, and session lengths at Life X Therapy.",
+        "shareImage": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      "indexable": true,
+      "sections": [
+        {
+          "id": "b7c5a6ee-0431-4859-a2a8-38818762d7ea",
+          "type": "page_header",
+          "hidden": false,
+          "data": {
+            "eyebrow": "FAQ",
+            "title": "Frequently Asked Questions",
+            "intro": "What to expect, how to choose a session, and how booking works. If your question isn’t here, get in touch and we’ll answer it directly.",
+            "breadcrumb": "FAQ",
+            "actions": []
+          }
+        },
+        {
+          "id": "7c7eeff9-9ac8-431e-985f-113573f2325b",
+          "type": "faq_list",
+          "hidden": false,
+          "data": {
+            "boxTitle": "Still have a question?",
+            "boxBody": "Reach out before booking and we’ll help you choose the treatment and session length that fits.",
+            "boxLink": {
+              "label": "Contact Life X Therapy",
+              "href": "/contact",
+              "ariaLabel": ""
+            }
+          }
+        },
+        {
+          "id": "3f18f1b5-4466-488e-a6da-62dff67e1e89",
+          "type": "cta",
+          "hidden": false,
+          "data": {
+            "image": {
+              "src": "/images/booking-cta.jpg",
+              "alt": ""
+            },
+            "eyebrow": "Ready to Begin",
+            "title": "Ready to Feel Better?",
+            "body": "Choose the massage and session length that works for you and book your appointment online.",
+            "button": {
+              "label": "Book Your Session",
+              "action": "booking",
+              "href": ""
+            }
+          }
+        }
+      ]
+    },
+    "privacy": {
+      "seo": {
+        "title": "Privacy Policy",
+        "description": "Privacy policy for Life X Therapy.",
+        "shareImage": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      "indexable": false,
+      "sections": [
+        {
+          "id": "d1819cdb-d9dd-4f6c-80be-bd1abf4fe073",
+          "type": "page_header",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Legal",
+            "title": "Privacy Policy",
+            "intro": "This page is ready for your privacy policy. The wording below is a placeholder.",
+            "breadcrumb": "Privacy Policy",
+            "actions": []
+          }
+        },
+        {
+          "id": "c510bc89-ab83-4b97-b0f8-53962edded97",
+          "type": "legal_body",
+          "hidden": false,
+          "data": {
+            "paragraphs": [
+              "[Privacy policy placeholder — replace with the full policy text.]",
+              "[Describe what personal information is collected, how it is used, how long it is kept, who it is shared with, and how a client can request access or deletion.]",
+              "[Note that appointment booking and payment are handled by Vagaro, and link to their privacy policy where appropriate.]"
+            ]
+          }
+        }
+      ]
+    },
+    "terms": {
+      "seo": {
+        "title": "Terms",
+        "description": "Terms of use for Life X Therapy.",
+        "shareImage": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      "indexable": false,
+      "sections": [
+        {
+          "id": "2e8fd6c1-af5e-43d7-b8dd-e09dd90aee0b",
+          "type": "page_header",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Legal",
+            "title": "Terms",
+            "intro": "This page is ready for your terms of use. The wording below is a placeholder.",
+            "breadcrumb": "Terms",
+            "actions": []
+          }
+        },
+        {
+          "id": "d56ccbb8-6dea-4d4f-8f5e-31e3cc4bc9cd",
+          "type": "legal_body",
+          "hidden": false,
+          "data": {
+            "paragraphs": [
+              "[Terms placeholder — replace with the full terms of use.]",
+              "[Cover use of the website, appointment and payment terms, and any policies that apply to bookings made through Vagaro.]",
+              "[No cancellation, rescheduling or refund policy has been supplied yet — add it here and update the matching FAQ answer.]"
+            ]
+          }
+        }
+      ]
+    },
+    "service": {
+      "seo": {
+        "title": "",
+        "description": "",
+        "shareImage": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      "indexable": true,
+      "sections": [
+        {
+          "id": "4edae280-788e-48d4-80b2-1988ddbd22fe",
+          "type": "service_content",
+          "hidden": false,
+          "data": {
+            "aboutEyebrow": "About This Massage",
+            "aboutTitle": "What the session is",
+            "expectEyebrow": "What To Expect",
+            "expectTitle": "How it runs",
+            "focusEyebrow": "Focus Areas",
+            "focusTitle": "Where the work goes",
+            "suitabilityEyebrow": "Suitability",
+            "suitabilityTitle": "Who this session may suit",
+            "suitabilityNote": "Not sure which session is right for you? Your therapist will talk it through with you at the start of your appointment.",
+            "pricingEyebrow": "Session Options",
+            "pricingTitle": "Lengths &\nPricing",
+            "pricingIntro": "Every length covers the same treatment. Longer sessions simply allow more time across more of the body.",
+            "bookingLegend": "Choose Your Session Length",
+            "bookingButton": "Book This Session",
+            "bookingNote": "Booking and payment are completed through Vagaro.",
+            "relatedEyebrow": "Keep Exploring",
+            "relatedTitle": "Explore Other Services"
+          }
+        },
+        {
+          "id": "8905290f-4151-4e40-87c0-d7a24a162519",
+          "type": "faq_preview",
+          "hidden": false,
+          "data": {
+            "eyebrow": "Good to know",
+            "title": "Before You\nBook",
+            "intro": "A few things worth knowing ahead of your appointment.",
+            "source": "services",
+            "viewAll": {
+              "label": "View All FAQs",
+              "href": "/faq",
+              "ariaLabel": ""
+            }
+          }
+        },
+        {
+          "id": "9567edab-5612-4c82-8c82-bb19e704707d",
+          "type": "cta",
+          "hidden": false,
+          "data": {
+            "image": {
+              "src": "/images/booking-cta.jpg",
+              "alt": ""
+            },
+            "eyebrow": "Ready to Begin",
+            "title": "Ready to Feel Better?",
+            "body": "Choose the massage and session length that works for you and book your appointment online.",
+            "button": {
+              "label": "Book Your Session",
+              "action": "booking",
+              "href": ""
+            }
+          }
+        }
+      ]
+    }
+  },
+  "services": [
+    {
+      "id": "7c5c40e3-f3c6-4bc3-aec6-1af8d24a2afe",
+      "data": {
+        "slug": "swedish-massage",
+        "previousSlugs": [],
+        "status": "active",
+        "sortOrder": 0,
+        "name": "Swedish Massage",
+        "shortName": "Swedish",
+        "description": "A soothing massage designed to alleviate tension, improve circulation, and encourage deep relaxation.",
+        "intro": "Classic, flowing bodywork at a pressure that stays comfortable from start to finish — the most familiar place to begin.",
+        "sessions": [
+          {
+            "minutes": 60,
+            "price": 85,
+            "vagaroUrl": "https://www.vagaro.com/cl/9RecE2kcCzyBYbFy4PQb26U~7VWDwJcRhCEGkQdeKX8="
+          },
+          {
+            "minutes": 90,
+            "price": 115,
+            "vagaroUrl": "https://www.vagaro.com/cl/9~C7dKH9MrvGIjKqCGPTyWPRdoKC6x~UILeU~8l-ErQ="
+          },
+          {
+            "minutes": 120,
+            "price": 140,
+            "vagaroUrl": "https://www.vagaro.com/cl/yZB0sdjbfDgKSHFazI466wcLKQON50UT190kAop44lk="
+          }
+        ],
+        "image": {
+          "src": "/images/swedish.jpg",
+          "alt": "Swedish massage session in a warmly lit treatment room"
+        },
+        "editorialImage": {
+          "src": "/images/philosophy.jpg",
+          "alt": "Calm, softly lit massage therapy room prepared for a session"
+        },
+        "about": [
+          "Swedish massage is the most widely recognised form of classical massage — long, flowing strokes worked over the surface layers of muscle at a steady, even pace.",
+          "It is often the starting point for anyone new to bodywork, and a familiar choice for people who simply want an uninterrupted hour or two of rest."
+        ],
+        "whatToExpect": [
+          "A short conversation at the start of the session about how you are feeling, where you would like attention, and the pressure you prefer.",
+          "Broad, rhythmic strokes across the back, shoulders, arms and legs, with the pace kept slow and consistent.",
+          "Pressure adjusted whenever you ask — you are welcome to speak up at any point and the work changes with you."
+        ],
+        "focusAreas": [
+          {
+            "title": "Full-body rest",
+            "body": "The session moves across the whole body rather than concentrating on a single area."
+          },
+          {
+            "title": "Everyday tension",
+            "body": "Attention to the shoulders, neck and lower back, where day-to-day tension tends to gather."
+          },
+          {
+            "title": "Comfortable pressure",
+            "body": "Lighter to moderate pressure throughout, set to what feels right for you on the day."
+          }
+        ],
+        "suitableFor": [
+          "Booking your first massage",
+          "Long stretches at a desk or behind the wheel",
+          "Winding down after a demanding week",
+          "Preferring lighter, steadier pressure"
+        ],
+        "featuredOnHome": true,
+        "seo": {
+          "title": "",
+          "description": "Swedish massage at Life X Therapy — soothing, flowing bodywork in 60, 90 or 120 minute sessions from $85. Book online through Vagaro.",
+          "shareImage": {
+            "src": "",
+            "alt": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "7ce0f1a5-0b63-41c5-894c-da1024584dbb",
+      "data": {
+        "slug": "therapeutic-massage",
+        "previousSlugs": [],
+        "status": "active",
+        "sortOrder": 1,
+        "name": "Therapeutic Massage",
+        "shortName": "Therapeutic",
+        "description": "Targeted bodywork designed to address sore muscles and stubborn tension, personalized around your body's needs.",
+        "intro": "Targeted bodywork that adapts as it goes — pressure and technique shaped around the areas asking for attention.",
+        "sessions": [
+          {
+            "minutes": 60,
+            "price": 90,
+            "vagaroUrl": "https://www.vagaro.com/cl/Spc0jIgL3pWWtI85tfAMWLBMsfVbpzsvHHXRIOQUK6Y="
+          },
+          {
+            "minutes": 90,
+            "price": 120,
+            "vagaroUrl": "https://www.vagaro.com/cl/0W5V2Q4P2KBms6S3CNi59a~GeeE~A2hUOdTShPUYv7c="
+          },
+          {
+            "minutes": 120,
+            "price": 145,
+            "vagaroUrl": "https://www.vagaro.com/cl/Vvr0mayYZhJA3PMHUxJgke7Ezq5~uPgZXlG2JyTQOMQ="
+          }
+        ],
+        "image": {
+          "src": "/images/hero-massage.jpg",
+          "alt": "Therapist applying targeted pressure during a therapeutic massage"
+        },
+        "editorialImage": {
+          "src": "/images/deep-pressure.jpg",
+          "alt": "Therapist working along a client’s upper back and shoulders"
+        },
+        "about": [
+          "Therapeutic massage sits between relaxation work and focused treatment. The session still flows, but more of it is spent on the areas you point to at the start.",
+          "Technique and pressure are chosen as the work goes on, based on what the tissue responds to and on the feedback you give during the session."
+        ],
+        "whatToExpect": [
+          "A longer opening conversation about the areas you would like worked on and anything that feels restricted or sore.",
+          "A mix of broader strokes and slower, more specific work over the areas you identified.",
+          "Regular check-ins on pressure, so the session stays within a range that feels productive rather than uncomfortable."
+        ],
+        "focusAreas": [
+          {
+            "title": "Specific areas",
+            "body": "Time concentrated on the regions you raise rather than spread evenly across the body."
+          },
+          {
+            "title": "Stubborn tension",
+            "body": "Slower, more sustained work over areas that have not eased with lighter massage."
+          },
+          {
+            "title": "Adjusted as you go",
+            "body": "Pressure and technique change through the session in response to your feedback."
+          }
+        ],
+        "suitableFor": [
+          "Tension concentrated in one or two areas",
+          "Returning clients who want more focused work",
+          "Desk posture and repetitive daily movement",
+          "Anyone between relaxation and deep tissue pressure"
+        ],
+        "featuredOnHome": true,
+        "seo": {
+          "title": "",
+          "description": "Therapeutic massage at Life X Therapy — targeted bodywork personalized to your body, in 60, 90 or 120 minute sessions from $90. Book online through Vagaro.",
+          "shareImage": {
+            "src": "",
+            "alt": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "312080c7-73fa-4c59-b5f9-67b5d5f84b79",
+      "data": {
+        "slug": "pregnancy-massage",
+        "previousSlugs": [],
+        "status": "active",
+        "sortOrder": 2,
+        "name": "Pregnancy Massage",
+        "shortName": "Pregnancy",
+        "description": "A specialized prenatal massage designed around the needs and comfort of expectant mothers, promoting relaxation and easing common pregnancy-related muscle tension.",
+        "intro": "Prenatal bodywork arranged around your comfort, with positioning and support adjusted to where you are in your pregnancy.",
+        "sessions": [
+          {
+            "minutes": 60,
+            "price": 85,
+            "vagaroUrl": "https://www.vagaro.com/cl/s2K5CuOPUQujM9RY0WbLQBM-S20tdYWS1dTsolycZ88="
+          },
+          {
+            "minutes": 90,
+            "price": 115,
+            "vagaroUrl": "https://www.vagaro.com/cl/DiO44A7o4KLO4Rsc~IWDPKIMy9fz3zTof-u7uzdqaL4="
+          }
+        ],
+        "image": {
+          "src": "/images/pregnancy.jpg",
+          "alt": "Expectant mother resting comfortably during a prenatal massage"
+        },
+        "editorialImage": {
+          "src": "/images/philosophy.jpg",
+          "alt": "Quiet treatment room with soft natural light"
+        },
+        "about": [
+          "Pregnancy massage is arranged around comfort first. Positioning, bolstering and pressure are all set up for how your body feels on the day of the session.",
+          "The work stays gentle and unhurried, with attention to the areas that commonly carry tension as posture changes through pregnancy."
+        ],
+        "whatToExpect": [
+          "A conversation at the start about how far along you are, how you have been feeling, and any positions you find comfortable or would rather avoid.",
+          "Side-lying or supported positioning with cushions and bolsters arranged before the work begins.",
+          "Gentle, steady pressure, with the session paused or repositioned whenever you would like."
+        ],
+        "focusAreas": [
+          {
+            "title": "Supported positioning",
+            "body": "Bolsters and cushions set up so you can settle without holding yourself in place."
+          },
+          {
+            "title": "Lower back and hips",
+            "body": "Unhurried attention to the areas that commonly carry tension during pregnancy."
+          },
+          {
+            "title": "Comfort first",
+            "body": "Pressure kept gentle throughout, and adjusted the moment you ask."
+          }
+        ],
+        "suitableFor": [
+          "Expectant mothers looking for time to rest",
+          "Tension through the lower back, hips or shoulders",
+          "Anyone who would like supported, side-lying positioning"
+        ],
+        "featuredOnHome": false,
+        "seo": {
+          "title": "",
+          "description": "Pregnancy massage at Life X Therapy — gentle prenatal bodywork built around your comfort, in 60 or 90 minute sessions from $85. Book online through Vagaro.",
+          "shareImage": {
+            "src": "",
+            "alt": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "42262f9a-5ef9-4245-9648-15ee135ab33f",
+      "data": {
+        "slug": "sports-massage",
+        "previousSlugs": [],
+        "status": "active",
+        "sortOrder": 3,
+        "name": "Sports Massage",
+        "shortName": "Sports",
+        "description": "Massage focused on active individuals and athletes, targeting areas of muscle tension while supporting flexibility, recovery, and physical performance.",
+        "intro": "Bodywork built around training — focused on the areas that take the load in your sport or routine.",
+        "sessions": [
+          {
+            "minutes": 60,
+            "price": 95,
+            "vagaroUrl": "https://www.vagaro.com/cl/MxjW1LyhtCvQTqZPUVw4Q5WaRMJUAOUXDcM2fy-afDo="
+          },
+          {
+            "minutes": 90,
+            "price": 125,
+            "vagaroUrl": "https://www.vagaro.com/cl/KOlU176ZPfPGPUEgAAl36XhRspJTx-xwWKjwga5OxCM="
+          }
+        ],
+        "image": {
+          "src": "/images/sports.jpg",
+          "alt": "Sports massage focused on an athlete’s leg muscles"
+        },
+        "editorialImage": {
+          "src": "/images/deep-tissue.jpg",
+          "alt": "Therapist working along an athlete’s leg during a sports massage"
+        },
+        "about": [
+          "Sports massage is shaped around how you train. The session concentrates on the muscle groups that carry the most load in your sport or weekly routine.",
+          "Pressure and technique vary depending on where you are in your training week — a session before an event is approached differently to one after a heavy block."
+        ],
+        "whatToExpect": [
+          "A conversation about your sport, your current training load, and where you are noticing tightness.",
+          "Focused work through the major muscle groups involved, combined with broader strokes between them.",
+          "Firmer pressure where it is useful, always kept within a range you are comfortable with."
+        ],
+        "focusAreas": [
+          {
+            "title": "Working muscle groups",
+            "body": "Time concentrated on the legs, hips, shoulders or back, depending on your sport."
+          },
+          {
+            "title": "Training load",
+            "body": "The session is adapted to where you are in your training or competition week."
+          },
+          {
+            "title": "Range of movement",
+            "body": "Attention to areas that feel tight or restricted through their normal range."
+          }
+        ],
+        "suitableFor": [
+          "Regular training, running or cycling",
+          "Tightness in the legs, hips or shoulders",
+          "Recovery days within a training block",
+          "Anyone who prefers firmer, focused pressure"
+        ],
+        "featuredOnHome": false,
+        "seo": {
+          "title": "",
+          "description": "Sports massage at Life X Therapy — focused bodywork for active people and athletes, in 60 or 90 minute sessions from $95. Book online through Vagaro.",
+          "shareImage": {
+            "src": "",
+            "alt": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "a4125256-f7a5-4f91-a57b-5f42f2b06b6d",
+      "data": {
+        "slug": "hot-stone-massage",
+        "previousSlugs": [],
+        "status": "active",
+        "sortOrder": 4,
+        "name": "Hot Stone Massage",
+        "shortName": "Hot Stone",
+        "description": "A warm, deeply relaxing massage experience incorporating heated stones to help ease tension and create a calming bodywork experience.",
+        "intro": "Warmth and massage together — heated basalt stones worked alongside the hands for a slower, quieter session.",
+        "sessions": [
+          {
+            "minutes": 60,
+            "price": 110,
+            "vagaroUrl": "https://www.vagaro.com/cl/V~~RIRAbnq6pvaW~oRBEePuCbLXpTqYl1P5ALU5KJj8="
+          },
+          {
+            "minutes": 90,
+            "price": 140,
+            "vagaroUrl": "https://www.vagaro.com/cl/~YiMVfAMaqjqTdpYPkG1l4Sy-DsFo4nOvQxwOL7scIg="
+          }
+        ],
+        "image": {
+          "src": "/images/hot-stone.jpg",
+          "alt": "Heated basalt stones placed along a client’s back"
+        },
+        "editorialImage": {
+          "src": "/images/booking-cta.jpg",
+          "alt": "Close view of hands during a calm massage session"
+        },
+        "about": [
+          "Hot stone massage combines smooth, heated basalt stones with conventional massage technique. The stones are rested along the body and also used in the hand as the work moves.",
+          "The warmth allows the session to stay slow and steady, and many people find it the quietest of the treatments offered here."
+        ],
+        "whatToExpect": [
+          "Stone temperature checked with you before the session begins, and again if you would like it warmer or cooler.",
+          "Stones rested along the back and limbs while the surrounding areas are worked by hand.",
+          "A slower overall pace than a standard massage, with fewer changes of position."
+        ],
+        "focusAreas": [
+          {
+            "title": "Sustained warmth",
+            "body": "Heated stones held along the back and limbs throughout the session."
+          },
+          {
+            "title": "A slower pace",
+            "body": "Longer, quieter passages of work with fewer transitions."
+          },
+          {
+            "title": "Broad relaxation",
+            "body": "Attention across the body rather than concentrated on one region."
+          }
+        ],
+        "suitableFor": [
+          "Anyone who runs cold or enjoys warmth",
+          "Looking for the quietest, slowest session on offer",
+          "A treat or occasion booking",
+          "Preferring moderate rather than deep pressure"
+        ],
+        "featuredOnHome": false,
+        "seo": {
+          "title": "",
+          "description": "Hot stone massage at Life X Therapy — heated basalt stones and skilled massage in 60 or 90 minute sessions from $110. Book online through Vagaro.",
+          "shareImage": {
+            "src": "",
+            "alt": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "f770c300-a7b7-4dde-85cd-141b3d6d9db7",
+      "data": {
+        "slug": "deep-tissue-massage",
+        "previousSlugs": [],
+        "status": "active",
+        "sortOrder": 5,
+        "name": "Deep Tissue Massage",
+        "shortName": "Deep Tissue",
+        "description": "Focused bodywork using deeper pressure to target persistent muscle tension and deeper layers of muscle and connective tissue.",
+        "intro": "Slower, firmer work into the deeper layers of muscle and connective tissue, for tension that has not eased with lighter massage.",
+        "sessions": [
+          {
+            "minutes": 60,
+            "price": 95,
+            "vagaroUrl": "https://www.vagaro.com/cl/-kmRJ6~RAvvfaohFvz7CnbLBniVR-rpHMo-wXVDGwuo="
+          },
+          {
+            "minutes": 90,
+            "price": 125,
+            "vagaroUrl": "https://www.vagaro.com/cl/un0VNs64gKcNiFK8KGbhk~o-y4cuUayUUJognfF~BjA="
+          }
+        ],
+        "image": {
+          "src": "/images/deep-pressure.jpg",
+          "alt": "Deep tissue massage using sustained pressure along the shoulders"
+        },
+        "editorialImage": {
+          "src": "/images/hero-massage.jpg",
+          "alt": "Therapist working slowly across a client’s back"
+        },
+        "about": [
+          "Deep tissue massage works more slowly and with more sustained pressure than a classic massage, reaching the layers beneath the surface muscle.",
+          "Because the pace is slower, sessions usually cover less of the body and spend longer in each area. It is a firm treatment, and communication about pressure matters more here than anywhere else."
+        ],
+        "whatToExpect": [
+          "A conversation about the areas you want worked on and how firm you would like the pressure to be.",
+          "Slow, deliberate work through a smaller number of areas, rather than a full-body sequence.",
+          "Frequent check-ins — pressure should stay firm but manageable, and it is adjusted as soon as you say so."
+        ],
+        "focusAreas": [
+          {
+            "title": "Deeper layers",
+            "body": "Sustained pressure beneath the surface muscle rather than broad surface strokes."
+          },
+          {
+            "title": "Persistent tension",
+            "body": "Time spent on areas that have not changed with lighter work."
+          },
+          {
+            "title": "Postural patterns",
+            "body": "Attention to the shoulders, neck, hips and lower back where holding patterns build."
+          }
+        ],
+        "suitableFor": [
+          "Tension that lighter massage has not shifted",
+          "Preferring firm, sustained pressure",
+          "A small number of specific problem areas",
+          "Previous experience with deeper bodywork"
+        ],
+        "featuredOnHome": true,
+        "seo": {
+          "title": "",
+          "description": "Deep tissue massage at Life X Therapy — slow, firm bodywork for persistent tension, in 60 or 90 minute sessions from $95. Book online through Vagaro.",
+          "shareImage": {
+            "src": "",
+            "alt": ""
+          }
+        }
+      }
+    }
+  ],
+  "faqs": {
+    "categories": [
+      "Before Your Session",
+      "During Your Session",
+      "Booking",
+      "Massage Services"
+    ],
+    "items": [
+      {
+        "id": "eb080c93-ea42-4dec-83b2-5d3d1d263d44",
+        "question": "What should I expect during my first session?",
+        "answer": "Your therapist will begin with a brief consultation to understand your goals, any areas of concern, and your preferences for pressure and focus. You'll be given privacy to undress to your comfort level and settle onto the table. The session will be adapted to your feedback throughout.",
+        "category": "Before Your Session",
+        "showOnHome": true,
+        "showOnServices": true
+      },
+      {
+        "id": "fc38843b-ae50-4f50-bce3-c6bc15ce279d",
+        "question": "Which massage should I choose?",
+        "answer": "If you're looking for relaxation and general tension relief, Swedish massage is a great starting point. For specific muscle tension or postural discomfort, Therapeutic or Deep Tissue may be more appropriate. If you're active or training regularly, Sports Massage could be ideal. Your therapist can also help guide you during your consultation.",
+        "category": "Massage Services",
+        "showOnHome": true,
+        "showOnServices": false
+      },
+      {
+        "id": "451fdbc2-54f0-438b-8c83-be868c9a45e4",
+        "question": "How long should my session be?",
+        "answer": "A 60-minute session works well for focused work on specific areas or a lighter relaxation session. 90 minutes allows time to address multiple areas more thoroughly. 120 minutes is ideal for a full-body treatment with additional attention to areas of concern.",
+        "category": "Massage Services",
+        "showOnHome": false,
+        "showOnServices": false
+      },
+      {
+        "id": "72b19b3f-fc72-4b10-81c9-a8e84babc9de",
+        "question": "What should I wear?",
+        "answer": "Undress to your comfort level. You will be professionally draped throughout the session, with only the area being worked on exposed. Comfort and privacy are always the priority.",
+        "category": "During Your Session",
+        "showOnHome": false,
+        "showOnServices": false
+      },
+      {
+        "id": "803ec432-ffe2-4744-9511-5e01ce11d248",
+        "question": "How do I book an appointment?",
+        "answer": "Appointments are booked through Vagaro, our online booking and payment system. Select your massage type, session length, and preferred time. You can book at any time through the Book Now button on this page.",
+        "category": "Booking",
+        "showOnHome": true,
+        "showOnServices": true
+      },
+      {
+        "id": "459bba60-f6ed-4182-a6c3-d9eee72916f8",
+        "question": "Can I reschedule my appointment?",
+        "answer": "[Rescheduling policy placeholder — update with your specific cancellation and rescheduling window, such as 24 or 48 hours notice required.]",
+        "category": "Booking",
+        "showOnHome": false,
+        "showOnServices": true
+      },
+      {
+        "id": "773579a2-ddfe-4fe2-88f9-0e3f37aa8ba4",
+        "question": "Is pregnancy massage available?",
+        "answer": "Yes. Pregnancy massage is available for expectant mothers and is designed specifically around the comfort and needs of prenatal clients. Please inform your therapist of your pregnancy and how far along you are when booking.",
+        "category": "Massage Services",
+        "showOnHome": false,
+        "showOnServices": false
+      }
+    ]
+  }
+}

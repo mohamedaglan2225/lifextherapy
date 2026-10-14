@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { navLinks, routes, siteConfig } from '@/config/site'
+import { routes, type NavLink } from '@/config/site'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { Container } from '@/components/ui/Container'
-import { Logo } from '@/components/ui/Logo'
+import { Logo, type LogoValue } from '@/components/ui/Logo'
 import { MobileNavigation } from './MobileNavigation'
 import { cn } from '@/lib/cn'
 
@@ -16,7 +16,15 @@ function isActive(pathname: string, href: string) {
   return href === routes.home ? pathname === routes.home : pathname.startsWith(href)
 }
 
-export function Header() {
+export type HeaderProps = {
+  siteName: string
+  logo: LogoValue
+  navigation: NavLink[]
+  bookLabel: string
+  menuBookLabel: string
+}
+
+export function Header({ siteName, logo, navigation, bookLabel, menuBookLabel }: HeaderProps) {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [menuPathname, setMenuPathname] = useState(pathname)
@@ -50,13 +58,13 @@ export function Header() {
         )}
       >
         <Container className="flex h-16 items-center justify-between lg:h-20">
-          <Link href={routes.home} aria-label={`${siteConfig.name} — home`}>
-            <Logo className="h-11 lg:h-14" sizes="56px" priority />
+          <Link href={routes.home} aria-label={`${siteName} — home`}>
+            <Logo logo={logo} className="h-11 lg:h-14" sizes="56px" priority />
           </Link>
 
           <nav aria-label="Primary" className="hidden md:block">
             <ul className="flex items-center gap-8">
-              {navLinks.map((link) => {
+              {navigation.map((link) => {
                 const active = isActive(pathname, link.href)
 
                 return (
@@ -86,7 +94,7 @@ export function Header() {
 
           <div className="flex items-center gap-4">
             <div className="hidden md:block">
-              <BookingLink size="sm">Book Now</BookingLink>
+              <BookingLink size="sm">{bookLabel}</BookingLink>
             </div>
 
             <button
@@ -113,7 +121,13 @@ export function Header() {
         </Container>
       </header>
 
-      <MobileNavigation id={MOBILE_NAV_ID} open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileNavigation
+        id={MOBILE_NAV_ID}
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        navigation={navigation}
+        bookLabel={menuBookLabel}
+      />
     </>
   )
 }

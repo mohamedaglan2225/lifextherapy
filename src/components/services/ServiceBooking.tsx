@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import type { Service } from '@/data/services'
-import { formatPrice } from '@/data/services'
+import type { ServiceDoc } from '@/lib/cms/documents'
+import { formatPrice } from '@/lib/cms/format'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { SessionOption } from './SessionOption'
 
@@ -10,7 +10,9 @@ import { SessionOption } from './SessionOption'
  * Session picker plus the booking action for a single service. Booking itself
  * still continues to Vagaro through the shared BookingLink.
  */
-export function ServiceBooking({ service }: { service: Service }) {
+export type ServiceBookingLabels = { bookingLegend: string; bookingButton: string; bookingNote: string }
+
+export function ServiceBooking({ service, labels }: { service: ServiceDoc; labels: ServiceBookingLabels }) {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const selected = service.sessions[selectedIndex]
 
@@ -18,7 +20,7 @@ export function ServiceBooking({ service }: { service: Service }) {
     <div className="rounded-sm border border-border bg-offwhite p-6 lg:p-8">
       <fieldset>
         <legend className="mb-4 text-[10px] font-medium uppercase tracking-[0.2em] text-bronze">
-          Choose Your Session Length
+          {labels.bookingLegend}
         </legend>
         <div className="flex flex-wrap gap-2">
           {service.sessions.map((session, index) => (
@@ -46,16 +48,15 @@ export function ServiceBooking({ service }: { service: Service }) {
       <BookingLink
         size="bar"
         className="mt-6"
-        service={service.slug}
-        minutes={selected.minutes}
+        href={selected.vagaroUrl || undefined}
         label={`Book ${service.name}, ${selected.minutes} minute session, ${formatPrice(selected.price)} — continues to Vagaro`}
       >
-        Book This Session
+        {labels.bookingButton}
       </BookingLink>
 
-      <p className="mt-4 text-center text-xs font-light text-bronze-dark">
-        Booking and payment are completed through Vagaro.
-      </p>
+      {labels.bookingNote && (
+        <p className="mt-4 text-center text-xs font-light text-bronze-dark">{labels.bookingNote}</p>
+      )}
     </div>
   )
 }

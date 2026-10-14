@@ -1,28 +1,16 @@
-import { businessPlaceholders, routes } from '@/config/site'
-import type { Contact, HomeHero } from './schema'
+import content from './defaults/site-content.json'
+import type { FaqsDoc, PageDoc, ServiceDoc, Settings } from './documents'
+import type { PageKey } from './sections'
 
 /**
- * The content the site shipped with. It is used only when the CMS is not
- * configured (local development, or before Supabase is connected) or when a
- * key has never been published. `supabase/seed.sql` holds the same values.
+ * The content the site shipped with, generated from the original pages.
+ * Used when the CMS is not configured, or for a document that has never been
+ * published. `supabase/seed.sql` is generated from the same file
+ * (`npm run cms:seed`), so the database starts with identical content.
  */
-export const defaultHomeHero: HomeHero = {
-  eyebrow: 'Massage Therapy & Bodywork',
-  headline: 'Feel Better.\nMove Better.',
-  headlineEmphasis: 'Live Calmer.',
-  body: 'Personalized massage therapy and bodywork designed to relieve tension, restore movement, and help you feel your best.',
-  image: '/images/hero-massage.jpg',
-  imageAlt: 'Massage therapist working on a client in a warmly lit studio',
-  primaryLabel: 'Book a Session',
-  secondaryLabel: 'Explore Services',
-  secondaryHref: routes.services,
-}
-
-export const defaultContact: Contact = {
-  phone: businessPlaceholders.phone,
-  email: businessPlaceholders.emailHref ? businessPlaceholders.email : '',
-  address: businessPlaceholders.address,
-  hours: businessPlaceholders.hours.map((entry) => ({ day: entry.day, hours: entry.hours })),
-  instagramUrl: '',
-  facebookUrl: '',
+export const defaultContent = content as unknown as {
+  settings: Settings
+  pages: Record<PageKey, PageDoc>
+  services: Array<{ id: string; data: ServiceDoc }>
+  faqs: FaqsDoc
 }

@@ -1,20 +1,29 @@
-import Image from 'next/image'
-import { routes, siteConfig } from '@/config/site'
+import type { ImageValue, LinkValue } from '@/lib/cms/fields'
+import { CmsImage } from '@/components/cms/CmsImage'
+import { Display } from '@/components/cms/Display'
 import { ArrowLink } from '@/components/ui/ArrowLink'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
 import { Eyebrow, SectionTitle } from '@/components/ui/SectionHeading'
 
-export function PhilosophySection() {
+export type PhilosophyData = {
+  image: ImageValue
+  eyebrow: string
+  title: string
+  paragraphs: string[]
+  link: LinkValue
+}
+
+export function PhilosophySection({ data }: { data: PhilosophyData }) {
   return (
     <section className="bg-ivory-dark py-20 lg:py-28">
       <Container>
         <Reveal className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="relative">
             <div className="relative aspect-4/5 overflow-hidden rounded-sm bg-border">
-              <Image
-                src="/images/philosophy.jpg"
-                alt="Calm massage therapy environment"
+              <CmsImage
+                src={data.image.src}
+                alt={data.image.alt}
                 fill
                 loading="lazy"
                 sizes="(min-width: 1024px) 45vw, 100vw"
@@ -29,21 +38,23 @@ export function PhilosophySection() {
           </div>
 
           <div className="lg:pl-8">
-            <Eyebrow className="mb-6">Our Philosophy</Eyebrow>
+            {data.eyebrow && <Eyebrow className="mb-6">{data.eyebrow}</Eyebrow>}
             <SectionTitle className="mb-6 text-charcoal">
-              Every Body
-              <br />
-              <em>Is Different</em>
+              <Display text={data.title} />
             </SectionTitle>
-            <p className="mb-6 text-base font-light leading-relaxed text-bronze-dark">
-              Your session should reflect how your body feels today. {siteConfig.name} offers
-              personalized bodywork based on your comfort, goals, and preferences.
-            </p>
-            <p className="mb-10 text-base font-light leading-relaxed text-bronze-dark">
-              Whether you&rsquo;re managing chronic tension, recovering from activity, navigating
-              pregnancy, or simply seeking rest &mdash; the work is shaped around you.
-            </p>
-            <ArrowLink href={routes.about}>Discover {siteConfig.name}</ArrowLink>
+            {data.paragraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className={
+                  index === data.paragraphs.length - 1
+                    ? 'mb-10 text-base font-light leading-relaxed text-bronze-dark'
+                    : 'mb-6 text-base font-light leading-relaxed text-bronze-dark'
+                }
+              >
+                {paragraph}
+              </p>
+            ))}
+            {data.link.label && <ArrowLink href={data.link.href}>{data.link.label}</ArrowLink>}
           </div>
         </Reveal>
       </Container>

@@ -1,12 +1,11 @@
 'use client'
 
-import type { SessionLength } from '@/data/services'
-import { formatPrice } from '@/data/services'
+import { formatPrice } from '@/lib/cms/format'
 import { cn } from '@/lib/cn'
 
 type SessionOptionProps = {
   name: string
-  session: SessionLength
+  session: { minutes: number; price: number }
   checked: boolean
   onSelect: () => void
 }

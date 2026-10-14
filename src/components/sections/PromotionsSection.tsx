@@ -1,31 +1,37 @@
-import Image from 'next/image'
-import { publishedImageSrc } from '@/lib/cms/images'
-import type { Promotion } from '@/lib/cms/schema'
+import type { PromotionItem } from '@/lib/cms/published'
+import { CmsImage } from '@/components/cms/CmsImage'
+import { Display } from '@/components/cms/Display'
+import { PromotionExpiry } from './PromotionExpiry'
 import { ButtonLink } from '@/components/ui/ButtonLink'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
 import { Eyebrow, SectionTitle } from '@/components/ui/SectionHeading'
 import { cn } from '@/lib/cn'
 
-/** Published promotions from the dashboard. Renders nothing when there are none. */
-export function PromotionsSection({ promotions }: { promotions: Promotion[] }) {
+export type PromotionsData = { eyebrow: string; title: string }
+
+/** Live promotions placed on this page. Renders nothing when there are none. */
+export function PromotionsSection({ data, promotions }: { data: PromotionsData; promotions: PromotionItem[] }) {
   if (promotions.length === 0) return null
   const single = promotions.length === 1
 
   return (
-    <section aria-label="Current offers" className="bg-ivory py-20 lg:py-28">
+    <section aria-label="Current offers" data-promotions className="bg-ivory py-20 lg:py-28">
       <Container>
         <Reveal stagger className="mb-12">
-          <Eyebrow className="mb-4">Current Offers</Eyebrow>
-          <SectionTitle className="max-w-xl text-charcoal">Promotions</SectionTitle>
+          {data.eyebrow && <Eyebrow className="mb-4">{data.eyebrow}</Eyebrow>}
+          <SectionTitle className="max-w-xl text-charcoal">
+            <Display text={data.title} />
+          </SectionTitle>
         </Reveal>
 
         <ul className={cn('grid gap-8', single ? 'max-w-4xl' : 'md:grid-cols-2 lg:grid-cols-3')}>
           {promotions.map((promotion, index) => {
-            const imageSrc = publishedImageSrc(promotion.imagePath)
+            const imageSrc = promotion.image.src
             return (
               <Reveal as="li" key={promotion.id} delay={index * 90}>
                 <article
+                  data-promotion-ends={promotion.endsAt || undefined}
                   className={cn(
                     'flex h-full flex-col overflow-hidden rounded-sm border border-border bg-offwhite',
                     single && imageSrc && 'md:flex-row',
@@ -38,9 +44,9 @@ export function PromotionsSection({ promotions }: { promotions: Promotion[] }) {
                         single && 'md:aspect-auto md:w-1/2',
                       )}
                     >
-                      <Image
+                      <CmsImage
                         src={imageSrc}
-                        alt={promotion.imageAlt}
+                        alt={promotion.image.alt}
                         fill
                         sizes={single ? '(min-width: 768px) 448px, 100vw' : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'}
                         data-settle
@@ -55,9 +61,9 @@ export function PromotionsSection({ promotions }: { promotions: Promotion[] }) {
                         {promotion.description}
                       </p>
                     )}
-                    {promotion.linkUrl && (
-                      <ButtonLink href={promotion.linkUrl} variant="dark" size="compact" className="mt-auto self-start">
-                        {promotion.linkLabel || 'Learn More'}
+                    {promotion.link.label && (
+                      <ButtonLink href={promotion.link.href} variant="dark" size="compact" className="mt-auto self-start">
+                        {promotion.link.label}
                       </ButtonLink>
                     )}
                   </div>
@@ -67,6 +73,7 @@ export function PromotionsSection({ promotions }: { promotions: Promotion[] }) {
           })}
         </ul>
       </Container>
+      <PromotionExpiry />
     </section>
   )
 }

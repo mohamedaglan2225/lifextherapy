@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { navLinks, routes } from '@/config/site'
+import { routes, type NavLink } from '@/config/site'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { cn } from '@/lib/cn'
 
@@ -10,9 +10,11 @@ type MobileNavigationProps = {
   id: string
   open: boolean
   onClose: () => void
+  navigation: NavLink[]
+  bookLabel: string
 }
 
-export function MobileNavigation({ id, open, onClose }: MobileNavigationProps) {
+export function MobileNavigation({ id, open, onClose, navigation, bookLabel }: MobileNavigationProps) {
   const pathname = usePathname()
 
   return (
@@ -26,7 +28,7 @@ export function MobileNavigation({ id, open, onClose }: MobileNavigationProps) {
     >
       <nav aria-label="Mobile" className="mt-8">
         <ul className="flex flex-col">
-          {navLinks.map((link, index) => {
+          {navigation.map((link, index) => {
             const active =
               link.href === routes.home ? pathname === routes.home : pathname.startsWith(link.href)
 
@@ -55,14 +57,14 @@ export function MobileNavigation({ id, open, onClose }: MobileNavigationProps) {
       </nav>
 
       <div
-        style={{ transitionDelay: open ? `${90 + navLinks.length * 45}ms` : '0ms' }}
+        style={{ transitionDelay: open ? `${90 + navigation.length * 45}ms` : '0ms' }}
         className={cn(
           'mt-10 transition-premium duration-[var(--lx-normal)]',
           open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0',
         )}
       >
         <BookingLink size="bar" onClick={onClose}>
-          Book Now
+          {bookLabel}
         </BookingLink>
       </div>
     </div>

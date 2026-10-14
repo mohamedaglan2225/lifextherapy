@@ -1,26 +1,28 @@
-import type { Service } from '@/data/services'
-import { formatPrice } from '@/data/services'
+import type { ServiceDoc } from '@/lib/cms/documents'
+import { formatPrice } from '@/lib/cms/format'
+import { Display } from '@/components/cms/Display'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
 import { Eyebrow, SectionTitle } from '@/components/ui/SectionHeading'
 
-export function SessionPricing({ service }: { service: Service }) {
+export type SessionPricingLabels = { pricingEyebrow: string; pricingTitle: string; pricingIntro: string }
+
+export function SessionPricing({ service, labels }: { service: ServiceDoc; labels: SessionPricingLabels }) {
   return (
     <section className="bg-ivory py-20 lg:py-28">
       <Container>
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <Reveal stagger>
-            <Eyebrow className="mb-4">Session Options</Eyebrow>
+            {labels.pricingEyebrow && <Eyebrow className="mb-4">{labels.pricingEyebrow}</Eyebrow>}
             <SectionTitle className="text-charcoal">
-              Lengths &amp;
-              <br />
-              Pricing
+              <Display text={labels.pricingTitle} />
             </SectionTitle>
-            <p className="mt-6 max-w-sm text-sm font-light leading-relaxed text-bronze-dark">
-              Every length covers the same treatment. Longer sessions simply allow more time across
-              more of the body.
-            </p>
+            {labels.pricingIntro && (
+              <p className="mt-6 max-w-sm text-sm font-light leading-relaxed text-bronze-dark">
+                {labels.pricingIntro}
+              </p>
+            )}
           </Reveal>
 
           <Reveal delay={90}>
@@ -39,7 +41,6 @@ export function SessionPricing({ service }: { service: Service }) {
             </ul>
             <BookingLink
               className="mt-8"
-              service={service.slug}
               label={`Book ${service.name} — continues to Vagaro`}
             >
               Book {service.shortName}

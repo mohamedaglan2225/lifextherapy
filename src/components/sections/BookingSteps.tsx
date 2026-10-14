@@ -1,16 +1,25 @@
-import { bookingSteps } from '@/data/content'
+import { Display } from '@/components/cms/Display'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
 import { Eyebrow, SectionTitle } from '@/components/ui/SectionHeading'
 
-export function BookingSteps() {
+export type BookingStepsData = {
+  eyebrow: string
+  title: string
+  steps: Array<{ number: string; title: string; body: string }>
+  buttonLabel: string
+}
+
+export function BookingSteps({ data }: { data: BookingStepsData }) {
   return (
     <section className="bg-offwhite py-20 lg:py-28">
       <Container>
         <Reveal stagger className="mx-auto mb-14 max-w-xl text-center">
-          <Eyebrow className="mb-4">How It Works</Eyebrow>
-          <SectionTitle className="text-charcoal">Book Your Session</SectionTitle>
+          {data.eyebrow && <Eyebrow className="mb-4">{data.eyebrow}</Eyebrow>}
+          <SectionTitle className="text-charcoal">
+            <Display text={data.title} />
+          </SectionTitle>
         </Reveal>
 
         <ol className="relative grid gap-8 md:grid-cols-3 lg:gap-12">
@@ -18,10 +27,10 @@ export function BookingSteps() {
             aria-hidden="true"
             className="absolute left-[16.67%] right-[16.67%] top-8 hidden h-px bg-border md:block"
           />
-          {bookingSteps.map((step, index) => (
+          {data.steps.map((step, index) => (
             <Reveal
               as="li"
-              key={step.number}
+              key={`${index}-${step.number}`}
               delay={index * 90}
               className="relative flex flex-col items-center text-center"
             >
@@ -37,7 +46,7 @@ export function BookingSteps() {
         </ol>
 
         <Reveal className="mt-12 text-center">
-          <BookingLink>Book Now</BookingLink>
+          <BookingLink>{data.buttonLabel}</BookingLink>
         </Reveal>
       </Container>
     </section>

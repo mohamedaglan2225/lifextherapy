@@ -1,17 +1,20 @@
-import Image from 'next/image'
-import type { Service } from '@/data/services'
+import type { ServiceDoc } from '@/lib/cms/documents'
+import { CmsImage } from '@/components/cms/CmsImage'
+import { Display } from '@/components/cms/Display'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
 import { Eyebrow, SectionTitle } from '@/components/ui/SectionHeading'
 
-export function ServiceEditorial({ service }: { service: Service }) {
+export type ServiceEditorialLabels = { aboutEyebrow: string; aboutTitle: string; expectEyebrow: string; expectTitle: string }
+
+export function ServiceEditorial({ service, labels }: { service: ServiceDoc; labels: ServiceEditorialLabels }) {
   return (
     <section className="bg-offwhite py-20 lg:py-28">
       <Container>
         <Reveal variant="image" className="relative aspect-16/9 overflow-hidden rounded-sm bg-ivory-dark">
-          <Image
-            src={service.editorialImage}
-            alt={service.editorialImageAlt}
+          <CmsImage
+            src={service.editorialImage.src}
+            alt={service.editorialImage.alt}
             fill
             loading="lazy"
             sizes="(min-width: 1280px) 1200px, 100vw"
@@ -21,13 +24,13 @@ export function ServiceEditorial({ service }: { service: Service }) {
 
         <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal stagger>
-            <Eyebrow className="mb-4">About This Massage</Eyebrow>
+            {labels.aboutEyebrow && <Eyebrow className="mb-4">{labels.aboutEyebrow}</Eyebrow>}
             <SectionTitle className="mb-6 text-3xl text-charcoal lg:text-4xl">
-              What the session is
+              <Display text={labels.aboutTitle} />
             </SectionTitle>
-            {service.about.map((paragraph) => (
+            {service.about.map((paragraph, index) => (
               <p
-                key={paragraph}
+                key={index}
                 className="mb-4 text-base font-light leading-relaxed text-bronze-dark last:mb-0"
               >
                 {paragraph}
@@ -36,13 +39,13 @@ export function ServiceEditorial({ service }: { service: Service }) {
           </Reveal>
 
           <Reveal stagger delay={90}>
-            <Eyebrow className="mb-4">What To Expect</Eyebrow>
+            {labels.expectEyebrow && <Eyebrow className="mb-4">{labels.expectEyebrow}</Eyebrow>}
             <SectionTitle className="mb-6 text-3xl text-charcoal lg:text-4xl">
-              How it runs
+              <Display text={labels.expectTitle} />
             </SectionTitle>
             <ol className="flex flex-col gap-5">
               {service.whatToExpect.map((step, index) => (
-                <li key={step} className="flex gap-4">
+                <li key={index} className="flex gap-4">
                   <span
                     aria-hidden="true"
                     className="mt-0.5 shrink-0 font-serif text-sm text-bronze"

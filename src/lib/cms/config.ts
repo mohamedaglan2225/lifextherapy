@@ -23,9 +23,3 @@ export const MEDIA_TYPES: Record<string, string> = {
   'image/avif': 'avif',
 }
 
-/** Public URL for an image that has been published to the public bucket. */
-export function publicMediaUrl(path: string) {
-  const config = getSupabaseConfig()
-  if (!config) return null
-  return `${config.url}/storage/v1/object/public/${MEDIA_PUBLIC_BUCKET}/${path}`
-}
