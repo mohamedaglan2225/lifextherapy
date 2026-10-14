@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import { businessPlaceholders, navLinks, siteConfig } from '@/config/site'
+import { socialLinks } from '@/lib/cms/contact'
+import type { Contact } from '@/lib/cms/schema'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { Container } from '@/components/ui/Container'
 import { Icon } from '@/components/ui/Icon'
 import { Logo } from '@/components/ui/Logo'
 
-export function Footer() {
+export function Footer({ contact }: { contact: Contact }) {
   return (
     <footer className="bg-charcoal pt-16 pb-8">
       <Container>
@@ -49,11 +51,11 @@ export function Footer() {
               Follow
             </h2>
             <ul className="flex gap-4">
-              {businessPlaceholders.social.map((social) => (
+              {socialLinks(contact).map((social) => (
                 <li key={social.label}>
                   <a
                     href={social.href}
-                    aria-label={`${social.label} (link placeholder)`}
+                    aria-label={social.placeholder ? `${social.label} (link placeholder)` : social.label}
                     className="flex h-9 w-9 items-center justify-center rounded-sm border border-charcoal-soft text-bronze-dark transition-premium duration-[var(--lx-fast)] hover:border-bronze hover:text-bronze motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95"
                   >
                     <Icon name={social.icon} size={16} />

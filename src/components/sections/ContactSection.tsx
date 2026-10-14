@@ -1,20 +1,22 @@
-import { businessPlaceholders } from '@/config/site'
+import { contactLinks, socialLinks } from '@/lib/cms/contact'
+import type { Contact } from '@/lib/cms/schema'
 import { BookingLink } from '@/components/ui/BookingLink'
 import { Container } from '@/components/ui/Container'
 import { Icon, type IconName } from '@/components/ui/Icon'
 import { Reveal } from '@/components/ui/Reveal'
 import { Eyebrow } from '@/components/ui/SectionHeading'
 
-const details: Array<{ label: string; value: string; icon: IconName }> = [
-  { label: 'Phone', value: businessPlaceholders.phone, icon: 'phone' },
-  { label: 'Email', value: businessPlaceholders.email, icon: 'mail' },
-  { label: 'Address', value: businessPlaceholders.address, icon: 'pin' },
-]
-
 const actionClasses =
   'flex-1 rounded-sm border border-charcoal py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-charcoal transition-premium duration-[var(--lx-fast)] hover:bg-charcoal hover:text-ivory motion-safe:hover:-translate-y-px motion-safe:active:translate-y-0 motion-safe:active:scale-[0.98]'
 
-export function ContactSection() {
+export function ContactSection({ contact }: { contact: Contact }) {
+  const links = contactLinks(contact)
+  const details: Array<{ label: string; value: string; icon: IconName }> = [
+    { label: 'Phone', value: contact.phone, icon: 'phone' },
+    { label: 'Email', value: links.emailLabel, icon: 'mail' },
+    { label: 'Address', value: contact.address, icon: 'pin' },
+  ]
+
   return (
     <section className="bg-ivory-dark py-20 lg:py-28">
       <Container>
@@ -51,11 +53,11 @@ export function ContactSection() {
                 Follow
               </h3>
               <ul className="flex gap-4">
-                {businessPlaceholders.social.map((social) => (
+                {socialLinks(contact).map((social) => (
                   <li key={social.label}>
                     <a
                       href={social.href}
-                      aria-label={`${social.label} (link placeholder)`}
+                      aria-label={social.placeholder ? `${social.label} (link placeholder)` : social.label}
                       className="flex h-11 w-11 items-center justify-center rounded-sm border border-border text-bronze transition-premium duration-[var(--lx-fast)] hover:border-bronze hover:text-bronze-dark"
                     >
                       <Icon name={social.icon} size={16} />
@@ -70,9 +72,9 @@ export function ContactSection() {
             <div className="rounded-sm border border-border bg-offwhite p-8">
               <h3 className="mb-6 font-serif text-xl text-charcoal">Business Hours</h3>
               <dl className="flex flex-col gap-3">
-                {businessPlaceholders.hours.map((entry) => (
+                {contact.hours.map((entry, index) => (
                   <div
-                    key={entry.day}
+                    key={index}
                     className="flex items-center justify-between border-b border-border pb-3 last:border-0 last:pb-0"
                   >
                     <dt className="text-sm font-light text-bronze-dark">{entry.day}</dt>
@@ -88,10 +90,10 @@ export function ContactSection() {
 
             <div className="flex gap-3">
               {/* These become live links as soon as real contact details are configured. */}
-              <a href={businessPlaceholders.phoneHref || undefined} className={actionClasses}>
+              <a href={links.phoneHref || undefined} className={actionClasses}>
                 Call
               </a>
-              <a href={businessPlaceholders.emailHref || undefined} className={actionClasses}>
+              <a href={links.emailHref || undefined} className={actionClasses}>
                 Email
               </a>
               <BookingLink size="block" className="flex-1">

@@ -22,3 +22,11 @@ Vagaro; the site has no internal checkout.
 
 Business details (phone, email, address, hours, therapist name and bio,
 testimonials) are placeholders in `src/config/site.ts` and `src/data/content.ts`.
+
+## Content dashboard
+
+The owner edits the home hero, contact details, social links and promotions at
+`/admin` once `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+are set. Without them the site uses its built-in content. Setup steps, the
+security model and Free plan notes are in [`docs/cms-setup.md`](docs/cms-setup.md);
+the database migration and seed live in `supabase/`.

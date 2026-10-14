@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { routes } from '@/config/site'
+import { getContact } from '@/lib/cms/published'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { ContactSection } from '@/components/sections/ContactSection'
 import { FinalCTA } from '@/components/sections/FinalCTA'
@@ -18,7 +19,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const contact = await getContact()
+
   return (
     <>
       <PageHeader
@@ -27,7 +30,7 @@ export default function ContactPage() {
         intro="Questions before you book, or prefer to talk it through first? Reach out and we’ll get back to you."
         breadcrumbs={[{ label: 'Home', href: routes.home }, { label: 'Contact' }]}
       />
-      <ContactSection />
+      <ContactSection contact={contact} />
       <FinalCTA />
     </>
   )
