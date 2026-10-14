@@ -63,10 +63,10 @@ export async function publishMedia(supabase: SupabaseClient, path: string | null
   throw new Error(`The image could not be published: ${error.message}`)
 }
 
-/** Short-lived link so the dashboard can preview a private draft image. */
-export async function draftPreviewUrl(supabase: SupabaseClient, path: string | null) {
-  if (!path) return null
-  if (!isUploadedImage(path)) return path
-  const { data } = await supabase.storage.from(MEDIA_DRAFT_BUCKET).createSignedUrl(path, 60 * 60)
-  return data?.signedUrl ?? null
+/** Short-lived links so the dashboard can show private draft images. */
+export async function signedPreviewUrls(supabase: SupabaseClient, paths: string[]) {
+  const uploaded = [...new Set(paths.filter(isUploadedImage))]
+  if (uploaded.length === 0) return {} as Record<string, string>
+  const { data } = await supabase.storage.from(MEDIA_DRAFT_BUCKET).createSignedUrls(uploaded, 60 * 60)
+  return Object.fromEntries((data ?? []).flatMap((item) => (item.path && item.signedUrl ? [[item.path, item.signedUrl]] : [])))
 }

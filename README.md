@@ -15,18 +15,16 @@ Copy `.env.example` to `.env.local` and set:
 - `NEXT_PUBLIC_SITE_URL` — production domain, used for canonical URLs, Open
   Graph and the sitemap.
 
-Vagaro booking links live only in `src/config/vagaro.ts`: set a service's
-exact Vagaro URL per duration there, otherwise its Book buttons open the Life X
-Therapy Vagaro business page. Booking and payment are handled externally by
-Vagaro; the site has no internal checkout.
-
-Business details (phone, email, address, hours, therapist name and bio,
-testimonials) are placeholders in `src/config/site.ts` and `src/data/content.ts`.
+All page content, services (including per-session Vagaro links), FAQs,
+promotions and site settings are managed in the owner dashboard at `/admin`.
+Without Supabase configured, the site uses the built-in content in
+`src/lib/cms/defaults/site-content.json`, which matches the original pages.
+Booking and payment are handled externally by Vagaro; the site has no internal
+checkout.
 
 ## Content dashboard
 
-The owner edits the home hero, contact details, social links and promotions at
-`/admin` once `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-are set. Without them the site uses its built-in content. Setup steps, the
-security model and Free plan notes are in [`docs/cms-setup.md`](docs/cms-setup.md);
-the database migration and seed live in `supabase/`.
+Setup, the security model, publishing and scheduling behaviour, and Free plan
+notes are in [`docs/cms-setup.md`](docs/cms-setup.md). Database migrations,
+the generated seed (`npm run cms:seed`) and the permission check live in
+`supabase/`.
