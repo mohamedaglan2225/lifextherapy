@@ -49,16 +49,16 @@ export async function requireAdmin(): Promise<AdminSession> {
  * can reference it. Bundled `/images/...` files need no copy. File names are
  * unique and never reused, so an existing copy is already the right file.
  */
-export async function publishMedia(supabase: SupabaseClient, path: string | null) {
-  if (!path || !isUploadedImage(path)) return
+export async function publishMedia(supabase: SupabaseClient, path: string | null): Promise<boolean> {
+  if (!path || !isUploadedImage(path)) return false
 
   const { error } = await supabase.storage
     .from(MEDIA_DRAFT_BUCKET)
     .copy(path, path, { destinationBucket: MEDIA_PUBLIC_BUCKET })
-  if (!error) return
+  if (!error) return true
 
   const { code, statusCode } = error as { code?: string; statusCode?: string }
-  if (code === 'ResourceAlreadyExists' || statusCode === '409') return
+  if (code === 'ResourceAlreadyExists' || statusCode === '409') return false
 
   throw new Error(`The image could not be published: ${error.message}`)
 }

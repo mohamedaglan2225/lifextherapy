@@ -14,7 +14,13 @@ export async function GET(_request: Request, { params }: { params: Promise<{ fil
 
   const { data, error } = await session.supabase.storage.from(MEDIA_DRAFT_BUCKET).download(file)
   if (error || !data) return new NextResponse(null, { status: 404 })
+  const types: Record<string, string> = { jpg: 'image/jpeg', png: 'image/png', webp: 'image/webp', avif: 'image/avif' }
   return new NextResponse(data, {
-    headers: { 'Content-Type': data.type || 'application/octet-stream', 'Cache-Control': 'private, no-store' },
+    headers: {
+      'Content-Type': types[file.split('.').pop() ?? ''] ?? 'application/octet-stream',
+      'Cache-Control': 'private, no-store',
+      'X-Content-Type-Options': 'nosniff',
+      'Content-Security-Policy': "default-src 'none'; sandbox",
+    },
   })
 }

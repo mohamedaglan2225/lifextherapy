@@ -28,8 +28,8 @@ export async function registerMedia(input: RegisterInput): Promise<ActionResult 
     p_height: dimension(input.height),
   })
   if (error) {
-    // Remove the rejected upload so nothing unregistered lingers.
-    await session.supabase.storage.from(MEDIA_DRAFT_BUCKET).remove([input.path])
+    // Remove an upload the database rejected; leave it for "Clean up" after other errors.
+    if (error.code === '22023') await session.supabase.storage.from(MEDIA_DRAFT_BUCKET).remove([input.path])
     return { ok: false, message: error.code === '22023' ? 'Use a JPG, PNG, WebP or AVIF image.' : 'The upload could not be added to the library.' }
   }
   const item = (await listMedia(session.supabase)).find((media) => media.id === id)
@@ -100,8 +100,13 @@ export async function cleanupMedia(): Promise<CleanupReport> {
     }
   }
 
-  const { data: known } = await supabase.from('cms_media').select('path')
+  const { data: known } = await supabase.from('cms_media').select('path, public_at')
   const registered = new Set((known ?? []).map((row) => row.path as string))
+  // A public copy of a file the database marks private (e.g. a publish that failed half-way).
+  const privateOnly = new Set((known ?? []).filter((row) => !row.public_at).map((row) => row.path as string))
+  const { data: publicFiles } = await supabase.storage.from(MEDIA_PUBLIC_BUCKET).list('', { limit: 1000 })
+  const leftover = (publicFiles ?? []).map((file) => file.name).filter((name) => privateOnly.has(name))
+  if (leftover.length && !(await supabase.storage.from(MEDIA_PUBLIC_BUCKET).remove(leftover)).error) publicCopiesRemoved += leftover.length
   const cutoff = Date.now() - 60 * 60 * 1000
   let strayFilesRemoved = 0
   for (const bucket of [MEDIA_DRAFT_BUCKET, MEDIA_PUBLIC_BUCKET]) {

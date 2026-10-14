@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
   if (referer) {
     try {
       const url = new URL(referer)
-      if (url.host === request.nextUrl.host && !url.pathname.startsWith('/api/')) path = url.pathname
+      if (url.host === request.nextUrl.host && !url.pathname.startsWith('/api/') && !url.pathname.startsWith('//')) path = url.pathname
     } catch {}
   }
   return NextResponse.redirect(new URL(path, request.url), 303)

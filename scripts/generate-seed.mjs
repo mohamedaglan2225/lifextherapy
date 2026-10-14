@@ -62,13 +62,13 @@ begin
         'update cms_seed set %I = jsonb_set(%I, ''{sections,0,data}'', $1) where kind = ''page'' and key = ''home''',
         v_state, v_state)
       using jsonb_build_object(
-        'eyebrow', v_hero ->> 'eyebrow',
-        'headline', (v_hero ->> 'headline') || case when coalesce(v_hero ->> 'headlineEmphasis', '') <> ''
+        'eyebrow', coalesce(v_hero ->> 'eyebrow', ''),
+        'headline', coalesce(v_hero ->> 'headline', '') || case when coalesce(v_hero ->> 'headlineEmphasis', '') <> ''
                                                    then E'\\n*' || (v_hero ->> 'headlineEmphasis') || '*' else '' end,
-        'body', v_hero ->> 'body',
-        'image', jsonb_build_object('src', v_hero ->> 'image', 'alt', v_hero ->> 'imageAlt'),
-        'primaryLabel', v_hero ->> 'primaryLabel',
-        'secondary', jsonb_build_object('label', v_hero ->> 'secondaryLabel', 'href', v_hero ->> 'secondaryHref', 'ariaLabel', ''));
+        'body', coalesce(v_hero ->> 'body', ''),
+        'image', jsonb_build_object('src', coalesce(v_hero ->> 'image', '/images/hero-massage.jpg'), 'alt', coalesce(v_hero ->> 'imageAlt', '')),
+        'primaryLabel', coalesce(v_hero ->> 'primaryLabel', 'Book a Session'),
+        'secondary', jsonb_build_object('label', coalesce(v_hero ->> 'secondaryLabel', 'Explore Services'), 'href', coalesce(v_hero ->> 'secondaryHref', '/services'), 'ariaLabel', ''));
     end if;
 
     if v_contact is not null then
@@ -76,9 +76,9 @@ begin
         'update cms_seed set %I = %I || $1 where kind = ''settings'' and key = ''site''',
         v_state, v_state)
       using jsonb_build_object(
-        'contact', jsonb_build_object('phone', v_contact ->> 'phone', 'email', v_contact ->> 'email', 'address', v_contact ->> 'address'),
-        'hours', v_contact -> 'hours',
-        'social', jsonb_build_object('instagramUrl', v_contact ->> 'instagramUrl', 'facebookUrl', v_contact ->> 'facebookUrl'));
+        'contact', jsonb_build_object('phone', coalesce(v_contact ->> 'phone', ''), 'email', coalesce(v_contact ->> 'email', ''), 'address', coalesce(v_contact ->> 'address', '')),
+        'hours', coalesce(v_contact -> 'hours', '[]'::jsonb),
+        'social', jsonb_build_object('instagramUrl', coalesce(v_contact ->> 'instagramUrl', ''), 'facebookUrl', coalesce(v_contact ->> 'facebookUrl', '')));
     end if;
   end loop;
 

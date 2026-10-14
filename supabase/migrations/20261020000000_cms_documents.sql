@@ -503,3 +503,19 @@ grant execute on function public.cms_media_usage(text) to authenticated;
 grant execute on function public.cms_delete_media(uuid) to authenticated;
 grant execute on function public.cms_unused_public_media() to authenticated;
 grant execute on function public.cms_mark_media_private(uuid[]) to authenticated;
+
+-- ---------------------------------------------------------------------------
+-- Retire the MVP write paths. The MVP tables stay (the seed reads them once to
+-- carry content over) but nothing can change them through the API any more.
+-- ---------------------------------------------------------------------------
+
+drop function if exists public.publish_content(text);
+drop function if exists public.publish_promotion(uuid);
+drop function if exists public.unpublish_promotion(uuid);
+do $$
+begin
+  if to_regclass('public.content_drafts') is not null then
+    revoke insert, update, delete on public.content_drafts, public.promotion_drafts from authenticated;
+  end if;
+end;
+$$;

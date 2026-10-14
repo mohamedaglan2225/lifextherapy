@@ -4,6 +4,7 @@ import { updateTag } from 'next/cache'
 import { randomUUID } from 'node:crypto'
 import type { PostgrestError, SupabaseClient } from '@supabase/supabase-js'
 import { getAdminSession, publishMedia } from '@/lib/cms/admin'
+import { MEDIA_PUBLIC_BUCKET } from '@/lib/cms/config'
 import { defaultContent } from '@/lib/cms/defaults'
 import { DOC_KINDS, isValidDocKey, schemaFor, type DocKind, type ServiceDoc } from '@/lib/cms/documents'
 import { uploadedImagePaths } from '@/lib/cms/fields'
@@ -96,14 +97,23 @@ async function publishVersion(supabase: SupabaseClient, kind: DocKind, key: stri
     return { ok: false, message: 'The saved draft has problems. Fix the highlighted fields and save again.', fieldErrors: fieldErrorsFrom(parsed.error) }
   }
 
+  // Copies made for this publish are withdrawn again if the publish does not happen.
+  const copied: string[] = []
+  const withdrawCopies = async () => {
+    if (copied.length) await supabase.storage.from(MEDIA_PUBLIC_BUCKET).remove(copied)
+  }
   try {
-    for (const path of uploadedImagePaths(state.draft.data)) await publishMedia(supabase, path)
+    for (const path of uploadedImagePaths(state.draft.data)) if (await publishMedia(supabase, path)) copied.push(path)
   } catch (error) {
+    await withdrawCopies()
     return { ok: false, message: `Not published: ${(error as Error).message}` }
   }
 
   const { error } = await supabase.rpc('cms_publish', { p_kind: kind, p_key: key, p_expected_version: version })
-  if (error) return dbFailure(error, 'Publishing failed. Your draft is saved; please try again.')
+  if (error) {
+    await withdrawCopies()
+    return dbFailure(error, 'Publishing failed. Your draft is saved; please try again.')
+  }
 
   if (!refreshLiveSite(kind, key)) {
     return {
